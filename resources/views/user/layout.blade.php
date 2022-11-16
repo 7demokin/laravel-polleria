@@ -18,6 +18,7 @@
     @include('user.partials.footer')
     <!-- Scripts -->
     @include('user.partials.script')
+    @yield('scripts')
 
 </body>
 

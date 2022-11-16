@@ -1,10 +1,62 @@
 @extends('user.layout', ['title' => $title, 'description' => $description, 'logo' => $logo])
+@section('scripts')
+    <script>
+        var swiper = new Swiper(".swiper-carrusel", {
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                dynamicBullets: true,
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+                loop: true,
+            },
+            autoplay: {
+                delay: 5000,
+            },
+        });
+    </script>
+@endsection
 @section('content')
     <main>
 
+
+        <section class="carrusel">
+            <!-- Swiper -->
+            <div class="swiper swiper-carrusel">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="{{ asset('Assets/img/banner/banner1.jpg') }}" alt="{{ $marca }}"
+                            class="swiper-carrusel-image">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('Assets/img/banner/banner2.jpeg') }}" alt="{{ $marca }}"
+                            class="swiper-carrusel-image">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('Assets/img/banner/banner3.jpg') }}" alt="{{ $marca }}"
+                            class="swiper-carrusel-image">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('Assets/img/banner/banner4.jpg') }}" alt="{{ $marca }}"
+                            class="swiper-carrusel-image">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('Assets/img/banner/banner5.jpg') }}" alt="{{ $marca }}"
+                            class="swiper-carrusel-image">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="{{ asset('Assets/img/banner/banner6.jpeg') }}" alt="{{ $marca }}"
+                            class="swiper-carrusel-image">
+                    </div>
+                </div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
         <!--
-              - #HOME SECTION
-            -->
+                                                  - #HOME SECTION
+                                                -->
 
         <section class="home" id="Inicio">
 
@@ -23,12 +75,12 @@
                 <div class="btn-group">
 
                     <button class="btn btn-primary btn-icon">
-                        <img src="./Assets/img/menu.svg" alt="menu icon">
+                        <img src="{{ asset('/Assets/img/menu.svg')}}" alt="menu icon">
                         Nuestro Menu
                     </button>
 
                     <button class="btn btn-secondary btn-icon">
-                        <img src="./Assets/img/arrow.svg" alt="menu icon">
+                        <img src="{{ asset('/Assets/img/arrow.svg')}}" alt="menu icon">
                         Conócenos
                     </button>
 
@@ -38,17 +90,8 @@
 
             <div class="home-right">
 
-                <img src="./Assets/img/categoria-brasa-pollo-entero.jpg" alt="food image" class="food-img food-1"
-                    width="200" loading="lazy">
-                <!--
-                <img src="./Assets/img/categoria-broaster-pollo-entero.jpg" alt="food image" class="food-img food-2" width="200" loading="lazy">
-                <img src="./Assets/img/categoria-medio-parrillero.jpg" alt="food image" class="food-img food-3" width="200" loading="lazy">
-
-
-                <img src="./Assets/img/dialog-1.svg" alt="dialog" class="dialog dialog-1" width="230">
-                <img src="./Assets/img/dialog-2.svg" alt="dialog" class="dialog dialog-2" width="230">
-        -->
-
+                <img src="{{ asset('Assets/img/logo.jpeg') }}" alt="food image" class="food-img food-1" width="200"
+                    loading="lazy">
                 <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-1" width="25">
                 <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-2" width="15">
                 <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-3" width="30">
@@ -64,24 +107,24 @@
 
 
         <!--
-              - #ABOUT SECTION
-            -->
+                                                  - #ABOUT SECTION
+                                                -->
 
         <section class="about" id="Nosotros">
 
             <div class="about-left">
 
                 <div class="img-box">
-                    <img src="./Assets/img/chichamorada.jpg" alt="about image" class="about-img" width="250">
+                    <img src="{{ asset('Assets/img/gallery/img-1.jpeg')}}" alt="about image" class="about-img" width="250">
                 </div>
                 <!--
-                <div class="abs-content-box">
-                  <div class="dotted-border">
-                    <p class="number-lg">17</p>
-                    <p class="text-md">Years <br> Experiense</p>
-                  </div>
-                </div>
-        -->
+                                                    <div class="abs-content-box">
+                                                      <div class="dotted-border">
+                                                        <p class="number-lg">17</p>
+                                                        <p class="text-md">Years <br> Experiense</p>
+                                                      </div>
+                                                    </div>
+                                            -->
 
                 <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-6" width="20">
                 <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-7" width="30">
@@ -109,8 +152,8 @@
                     quam metus nec nisi.
                 </p>
                 <!--
-                <img src="./Assets/img/signature.png" alt="signature" class="signature" width="150">
-        -->
+                                                    <img src="./Assets/img/signature.png" alt="signature" class="signature" width="150">
+                                            -->
             </div>
 
         </section>
@@ -120,80 +163,80 @@
 
 
         <!--
-              - #SERVICES SECTION
-            -->
+                                                  - #SERVICES SECTION
+                                                -->
         <!--
-            <section class="services" id="services">
+                                                <section class="services" id="services">
 
-              <div class="service-card">
+                                                  <div class="service-card">
 
-                <p class="card-number">01</p>
+                                                    <p class="card-number">01</p>
 
-                <h3 class="card-heading">We are located in the city center</h3>
+                                                    <h3 class="card-heading">We are located in the city center</h3>
 
-                <p class="card-text">
-                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                </p>
+                                                    <p class="card-text">
+                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                    </p>
 
-              </div>
+                                                  </div>
 
-              <div class="service-card">
+                                                  <div class="service-card">
 
-                <p class="card-number">02</p>
+                                                    <p class="card-number">02</p>
 
-                <h3 class="card-heading">Fresh ingredients from organic farms</h3>
+                                                    <h3 class="card-heading">Fresh ingredients from organic farms</h3>
 
-                <p class="card-text">
-                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                </p>
+                                                    <p class="card-text">
+                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                    </p>
 
-              </div>
+                                                  </div>
 
-              <div class="service-card">
+                                                  <div class="service-card">
 
-                <p class="card-number">03</p>
+                                                    <p class="card-number">03</p>
 
-                <h3 class="card-heading">Own fast delivery. 30 min Maximum</h3>
+                                                    <h3 class="card-heading">Own fast delivery. 30 min Maximum</h3>
 
-                <p class="card-text">
-                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                </p>
+                                                    <p class="card-text">
+                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                    </p>
 
-              </div>
+                                                  </div>
 
-              <div class="service-card">
+                                                  <div class="service-card">
 
-                <p class="card-number">04</p>
+                                                    <p class="card-number">04</p>
 
-                <h3 class="card-heading">Professional, experienced chefs</h3>
+                                                    <h3 class="card-heading">Professional, experienced chefs</h3>
 
-                <p class="card-text">
-                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                </p>
+                                                    <p class="card-text">
+                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                    </p>
 
-              </div>
+                                                  </div>
 
-              <div class="service-card">
+                                                  <div class="service-card">
 
-                <p class="card-number">05</p>
+                                                    <p class="card-number">05</p>
 
-                <h3 class="card-heading">The highest standards of service</h3>
+                                                    <h3 class="card-heading">The highest standards of service</h3>
 
-                <p class="card-text">
-                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                </p>
+                                                    <p class="card-text">
+                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                    </p>
 
-              </div>
+                                                  </div>
 
-            </section>
-        -->
+                                                </section>
+                                            -->
 
 
 
 
         <!--
-              - #PRODUCT SECTION
-            -->
+                                                  - #PRODUCT SECTION
+                                                -->
 
         <section class="product" id="Carta">
 
@@ -270,11 +313,11 @@
                             <img src="./Assets/img/brasa-cuarto-de-pollo-300x300.jpg.webp" alt="product image"
                                 class="product-img" width="200" loading="lazy">
                             <!--
-                      <div class="card-badge green">
-                        <ion-icon name="leaf"></ion-icon>
-                        <p>Vegan</p>
-                      </div>
-        -->
+                                                          <div class="card-badge green">
+                                                            <ion-icon name="leaf"></ion-icon>
+                                                            <p>Vegan</p>
+                                                          </div>
+                                            -->
                         </div>
 
                         <div class="product-content">
@@ -305,11 +348,11 @@
                             <img src="./Assets/img/parrilla-trio-mix-300x300.jpg.webp" alt="product image"
                                 class="product-img" width="200" loading="lazy">
                             <!--
-                      <div class="card-badge red">
-                        <ion-icon name="flame"></ion-icon>
-                        <p>Hot</p>
-                      </div>
-        -->
+                                                          <div class="card-badge red">
+                                                            <ion-icon name="flame"></ion-icon>
+                                                            <p>Hot</p>
+                                                          </div>
+                                            -->
                         </div>
 
                         <div class="product-content">
@@ -341,11 +384,11 @@
                             <img src="./Assets/img/parrilla-para-dos-300x300.jpg.webp" alt="product image"
                                 class="product-img" width="200" loading="lazy">
                             <!--
-                      <div class="card-badge green">
-                        <ion-icon name="leaf"></ion-icon>
-                        <p>Vegan</p>
-                      </div>
-        -->
+                                                          <div class="card-badge green">
+                                                            <ion-icon name="leaf"></ion-icon>
+                                                            <p>Vegan</p>
+                                                          </div>
+                                            -->
                         </div>
 
                         <div class="product-content">
@@ -415,87 +458,87 @@
 
 
         <!--
-              - #TESTIMONIALS SECTION
-            -->
+                                                  - #TESTIMONIALS SECTION
+                                                -->
         <!--
-            <section class="testimonials" id="testimonials">
+                                                <section class="testimonials" id="testimonials">
 
-              <h2 class="section-title">What our customers say?</h2>
+                                                  <h2 class="section-title">What our customers say?</h2>
 
-              <p class="section-text">
-                Consectetur numquam poro nemo veniam
-                eligendi rem adipisci quo modi.
-              </p>
+                                                  <p class="section-text">
+                                                    Consectetur numquam poro nemo veniam
+                                                    eligendi rem adipisci quo modi.
+                                                  </p>
 
-              <div class="testimonials-grid">
+                                                  <div class="testimonials-grid">
 
-                <div class="testimonials-card">
+                                                    <div class="testimonials-card">
 
-                  <h4 class="card-title">Very tasty</h4>
+                                                      <h4 class="card-title">Very tasty</h4>
 
-                  <div class="testimonials-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
+                                                      <div class="testimonials-rating">
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                      </div>
 
-                  <p class="testimonials-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi
-                    inventore possimus
-                    laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus
-                    tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam
-                    labore,
-                    aliquam dolor harum!
-                  </p>
+                                                      <p class="testimonials-text">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi
+                                                        inventore possimus
+                                                        laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus
+                                                        tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam
+                                                        labore,
+                                                        aliquam dolor harum!
+                                                      </p>
 
-                  <div class="customer-info">
-                    <div class="customer-img-box">
-                      <img src="./Assets/img/testimonials1.jpg" alt="customer image" class="customer-img" width="100"
-                        loading="lazy">
-                    </div>
+                                                      <div class="customer-info">
+                                                        <div class="customer-img-box">
+                                                          <img src="./Assets/img/testimonials1.jpg" alt="customer image" class="customer-img" width="100"
+                                                            loading="lazy">
+                                                        </div>
 
-                    <h5 class="customer-name">Emma Newman</h5>
-                  </div>
+                                                        <h5 class="customer-name">Emma Newman</h5>
+                                                      </div>
 
-                </div>
+                                                    </div>
 
-                <div class="testimonials-card">
+                                                    <div class="testimonials-card">
 
-                  <h4 class="card-title">I have lunch here every day</h4>
+                                                      <h4 class="card-title">I have lunch here every day</h4>
 
-                  <div class="testimonials-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
+                                                      <div class="testimonials-rating">
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                        <ion-icon name="star"></ion-icon>
+                                                      </div>
 
-                  <p class="testimonials-text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi
-                    inventore possimus
-                    laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus
-                    tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam
-                    labore,
-                    aliquam dolor harum!
-                  </p>
+                                                      <p class="testimonials-text">
+                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi
+                                                        inventore possimus
+                                                        laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus
+                                                        tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam
+                                                        labore,
+                                                        aliquam dolor harum!
+                                                      </p>
 
-                  <div class="customer-info">
-                    <div class="customer-img-box">
-                      <img src="./Assets/img/testimonials2.jpg" alt="customer image" class="customer-img" width="100"
-                        loading="lazy">
-                    </div>
+                                                      <div class="customer-info">
+                                                        <div class="customer-img-box">
+                                                          <img src="./Assets/img/testimonials2.jpg" alt="customer image" class="customer-img" width="100"
+                                                            loading="lazy">
+                                                        </div>
 
-                    <h5 class="customer-name">Paul Trueman</h5>
-                  </div>
+                                                        <h5 class="customer-name">Paul Trueman</h5>
+                                                      </div>
 
-                </div>
+                                                    </div>
 
-              </div>
+                                                  </div>
 
-            </section>
-        -->
+                                                </section>
+                                            -->
     </main>
 @endsection

@@ -27,6 +27,7 @@
   --saffron: hsl(45, 91%, 58%);
   --rhythm: hsl(240, 9%, 51%);
   --white: hsl(0, 0%, 100%);
+  --swiper-theme-color: #fff !important;
 
   /**
    * typography 
@@ -159,9 +160,8 @@ body {
 
 .container {
   position: relative;
-  max-width: 1440px;
   margin: auto;
-  background: #00;
+  background: #000;
   overflow: hidden;
 }
 
@@ -394,6 +394,7 @@ body {
   grid-template-columns: 1fr;
   gap: 50px;
   padding: 150px var(--px) var(--py);
+  padding-top: 75px;
 }
 
 .home-left { text-align: center; }
@@ -540,6 +541,7 @@ body {
 
 .about {
   padding: var(--py) var(--px);
+  padding-top: 150px;
   display: grid;
   grid-template-columns: 1fr;
   gap: 60px;
@@ -670,7 +672,7 @@ body {
   #PRODUCT SECTION
 \*-----------------------------------*/
 
-.product { padding: var(--py) var(--px); }
+.product { padding: var(--py) var(--px); padding-top: 150px; }
 
 .product .section-title { margin-bottom: 30px; }
 
@@ -879,3 +881,48 @@ footer {
   text-align: center;
   letter-spacing: 0.5px;
 }
+
+/*swiper*/
+.carrusel{
+  width: 100%;
+}
+
+.swiper-carrusel {
+  width: 100%;
+  height: 600px;
+  margin-top: 50px;
+}
+@media (max-width: 450px) {
+  .swiper-carrusel {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-carrusel-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
