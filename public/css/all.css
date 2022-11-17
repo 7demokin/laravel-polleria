@@ -394,7 +394,7 @@ body {
   grid-template-columns: 1fr;
   gap: 50px;
   padding: 150px var(--px) var(--py);
-  padding-top: 75px;
+  padding-top: 150px;
 }
 
 .home-left { text-align: center; }

@@ -1,27 +1,26 @@
 @extends('user.layout', ['title' => $title, 'description' => $description, 'logo' => $logo])
 @section('scripts')
     <script>
+        /*
         var swiper = new Swiper(".swiper-carrusel", {
             loop: true,
             pagination: {
                 el: ".swiper-pagination",
                 dynamicBullets: true,
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-                loop: true,
             },
             autoplay: {
                 delay: 5000,
             },
-        });
+        });*/
+        
     </script>
 @endsection
 @section('content')
     <main>
 
-
-        <section class="carrusel">
             <!-- Swiper -->
+<!--
+        <section class="carrusel">
             <div class="swiper swiper-carrusel">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
@@ -49,11 +48,10 @@
                             class="swiper-carrusel-image">
                     </div>
                 </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>
+    -->
         <!--
                                                   - #HOME SECTION
                                                 -->
@@ -138,6 +136,7 @@
                 <h2 class="section-title">Lorem Ipsum</h2>
 
                 <p class="section-text">
+                    <br>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed feugiat nibh, vel tincidunt sem.
                     Pellentesque convallis, leo quis tempus ullamcorper, lorem justo egestas quam, consectetur imperdiet
                     quam metus nec nisi. Maecenas varius faucibus erat, non congue libero. Nullam fringilla ultrices quam id
@@ -248,201 +247,30 @@
 
             <div class="products-grid">
 
+                @foreach ($productos as $producto)
                 <a href="#">
-
                     <div class="product-card">
-
                         <div class="img-box">
-                            <img src="./Assets/img/brasa-pollo-entero-sin-gaseosa-300x300.jpg.webp" alt="product image"
-                                class="product-img" width="200" loading="lazy">
+                            <img src="{{ $producto->imagen != null ? $producto->imagen : asset('Assets/img/no-pictures.png') }}" alt="product image"
+                                class="product-img" width="200" loading="lazy" alt="{{ $producto->nombre }}">
                         </div>
-
                         <div class="product-content">
-
                             <div class="wrapper">
-                                <h3 class="product-name">Pollo a la Brasa</h3>
-
+                                <h3 class="product-name">{{ $producto->categoria->nombre }}</h3>
                                 <p class="product-price">
-                                    <span class="small">S/</span>59.5
+                                    <span class="small">S/</span>{{ $producto->precio }}
                                 </p>
                             </div>
-
                             <p class="product-text">
-                                01 Pollo a la brasa, Papas fritas y Ensalada
+                                {{ $producto->nombre }}
                             </p>
                         </div>
-
                     </div>
-
                 </a>
+                @endforeach
 
-                <a href="#">
+                
 
-                    <div class="product-card">
-
-                        <div class="img-box">
-                            <img src="./Assets/img/brasa-medio-pollo-300x300.webp" alt="product image"
-                                class="product-img" width="200" loading="lazy">
-                        </div>
-
-                        <div class="product-content">
-
-                            <div class="wrapper">
-                                <h3 class="product-name">1/2 Pollo a la Brasa</h3>
-
-                                <p class="product-price">
-                                    <span class="small">S/</span>37
-                                </p>
-                            </div>
-
-                            <p class="product-text">
-                                1/2 Pollo a la brasa, Papas fritas y Ensalada
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-                <a href="#">
-
-                    <div class="product-card">
-
-                        <div class="img-box">
-                            <img src="./Assets/img/brasa-cuarto-de-pollo-300x300.jpg.webp" alt="product image"
-                                class="product-img" width="200" loading="lazy">
-                            <!--
-                                                          <div class="card-badge green">
-                                                            <ion-icon name="leaf"></ion-icon>
-                                                            <p>Vegan</p>
-                                                          </div>
-                                            -->
-                        </div>
-
-                        <div class="product-content">
-
-                            <div class="wrapper">
-                                <h3 class="product-name">1/4 Pollo a la Brasa</h3>
-
-                                <p class="product-price">
-                                    <span class="small">S/</span>20
-                                </p>
-                            </div>
-
-                            <p class="product-text">
-                                1/4 Pollo a la brasa, Papas fritas y Ensalada
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-                <a href="#">
-
-                    <div class="product-card">
-
-                        <div class="img-box">
-                            <img src="./Assets/img/parrilla-trio-mix-300x300.jpg.webp" alt="product image"
-                                class="product-img" width="200" loading="lazy">
-                            <!--
-                                                          <div class="card-badge red">
-                                                            <ion-icon name="flame"></ion-icon>
-                                                            <p>Hot</p>
-                                                          </div>
-                                            -->
-                        </div>
-
-                        <div class="product-content">
-
-                            <div class="wrapper">
-                                <h3 class="product-name">Parrilla Trio Mix</h3>
-
-                                <p class="product-price">
-                                    <span class="small">S/</span>89.5
-                                </p>
-                            </div>
-
-                            <p class="product-text">
-                                03 Anticuchos de corazón, 03 Brochetas de pollo, 01 Chorizo parrillero, 01 Bife, ¼ Pollo a
-                                la Brasa, ¼ Pollo a la, Parrilla, Papas fritas y Ensalada
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-                <a href="#">
-
-                    <div class="product-card">
-
-                        <div class="img-box">
-                            <img src="./Assets/img/parrilla-para-dos-300x300.jpg.webp" alt="product image"
-                                class="product-img" width="200" loading="lazy">
-                            <!--
-                                                          <div class="card-badge green">
-                                                            <ion-icon name="leaf"></ion-icon>
-                                                            <p>Vegan</p>
-                                                          </div>
-                                            -->
-                        </div>
-
-                        <div class="product-content">
-
-                            <div class="wrapper">
-                                <h3 class="product-name">Parrilla para 2</h3>
-
-                                <p class="product-price">
-                                    <span class="small">S/</span>66.5
-                                </p>
-                            </div>
-
-                            <p class="product-text">
-                                02 Brochetas de pollo, 02 Anticuchos de corazón, Chuleta de cerdo, ¼ Pollo a la parrilla y ¼
-                                Pollo a la brasa
-                            </p>
-
-
-                        </div>
-
-                    </div>
-
-                </a>
-
-                <a href="#">
-
-                    <div class="product-card">
-
-                        <div class="img-box">
-                            <img src="./Assets/img/parrilla-clasica-familiar-300x300.jpg.webp" alt="product image"
-                                class="product-img" width="200" loading="lazy">
-                        </div>
-
-                        <div class="product-content">
-
-                            <div class="wrapper">
-                                <h3 class="product-name">Parrilla Clásica Familiar</h3>
-
-                                <p class="product-price">
-                                    <span class="small">S/</span>100.5
-                                </p>
-                            </div>
-
-                            <p class="product-text">
-                                01 Chuleta con bife, ¼ Pollo a la Parrilla, ¼ Pollo a la Brasa, 02 Chorizos parrilleros, 02
-                                Anticuchos de corazón, Papas fritas y Ensalada
-                            </p>
-
-
-                        </div>
-
-                    </div>
-
-                </a>
 
             </div>
 
@@ -453,6 +281,15 @@
 
         </section>
 
+        <section class="about">
+          <div class="section-title">
+            Ubicación:
+            <div class="section-text">Av. Canta Callao Mz. A. RI Lt. 19 Urb. Virgen del Rosario - SMP</div>
+          </div>
+          <div>
+            <iframe src="https://www.google.com/maps/d/embed?mid=12nNOk7khhSzJ_f-y-HqERVY1R5M&ehbc=2E312F" width="100%" height="500"></iframe>
+          </div>
+        </section>
 
 
 
