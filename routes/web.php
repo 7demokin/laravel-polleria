@@ -15,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get("/", [PublicController::class, 'index'])->name("home");
+Route::get("/nosotros", [PublicController::class, 'about'])->name("about");
+Route::get("/carta", [PublicController::class, 'menu'])->name("menu");

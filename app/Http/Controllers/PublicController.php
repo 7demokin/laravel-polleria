@@ -34,5 +34,23 @@ class PublicController extends Controller
         return view($this->data["ruta"] .".index")->with($this->data);
     }
     
+    public function about(Request $request){
+        $this->data["title"] = 'Nosotros';
+        $this->data["description"] = $this->data["marca"];
 
+        return view($this->data["ruta"] .".nosotros")->with($this->data);
+    }
+
+    public function menu(Request $request){
+        $this->data["title"] = 'Carta';
+        $this->data["description"] = $this->data["marca"];
+        $this->data["categorias"] = Categoria::where('estado', 'A')->get();
+        
+        foreach ($this->data["categorias"] as $key => $value) {
+            $productos = Producto::where('categoria_id', $value['id'])->orderBy('precio','desc')->get();
+            $this->data["categorias"][$key]['productos'] = $productos;
+        }
+        
+        return view($this->data["ruta"] .".carta")->with($this->data);
+    }
 }

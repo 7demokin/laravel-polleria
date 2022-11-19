@@ -5,6 +5,8 @@
 
 <head>
     @include('user.partials.head', ['title' => $title, 'description' => $description, 'logo' => $logo])
+    <!-- Scripts -->
+    @yield('styles')
 </head>
 
 <body>

@@ -56,47 +56,48 @@
                                                   - #HOME SECTION
                                                 -->
 
-        <section class="home" id="Inicio">
-
+        <section  id="Inicio">
+          <div class="title-div">
+            <h1 class="title-text">Bienvenido a Pollos y Parrillas Edualdo y Familia!</h1>
+          </div>
+          
+          <div class="home">
             <div class="home-left">
 
-                <p class="home-subtext">Bienvenido a Pollos y Parrillas Edualdo y Familia!</p>
+            <p class="main-heading">Ven y disfruta con toda la familia!</p>
 
-                <h1 class="main-heading">Ven y disfruta con toda la familia!</h1>
+            <p class="home-text">
+                Echa un vistazo a los contundentes pollos a la brasa, parrillas, y refrescantes bebidas para acompañar. Haz tu pedido para disfrutar el sabor de siempre a un simple clic.
+            </p>
 
-                <p class="home-text">
-                    Echa un vistazo a los contundentes pollos a la brasa, parrillas, piqueos, platos a la carta, menús,
-                    guarniciones y refrescantes bebidas para acompañar. Haz tu pedido para disfrutar el sabor de siempre a
-                    un simple clic.
-                </p>
+            <div class="btn-group">
 
-                <div class="btn-group">
+                <button class="btn btn-primary btn-icon">
+                    <img src="{{ asset('/Assets/img/menu.svg')}}" alt="menu icon">
+                    Nuestra Carta
+                </button>
 
-                    <button class="btn btn-primary btn-icon">
-                        <img src="{{ asset('/Assets/img/menu.svg')}}" alt="menu icon">
-                        Nuestro Menu
-                    </button>
-
-                    <button class="btn btn-secondary btn-icon">
-                        <img src="{{ asset('/Assets/img/arrow.svg')}}" alt="menu icon">
-                        Conócenos
-                    </button>
-
-                </div>
+                <button class="btn btn-secondary btn-icon">
+                    <img src="{{ asset('/Assets/img/arrow.svg')}}" alt="menu icon">
+                    Conócenos
+                </button>
 
             </div>
 
-            <div class="home-right">
+        </div>
 
-                <img src="{{ asset('Assets/img/logo.jpeg') }}" alt="food image" class="food-img food-1" width="200"
-                    loading="lazy">
-                <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-1" width="25">
-                <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-2" width="15">
-                <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-3" width="30">
-                <img src="./Assets/img/ring.svg" alt="ring shape" class="shape shape-4" width="60">
-                <img src="./Assets/img/ring.svg" alt="ring shape" class="shape shape-5" width="40">
+        <div class="home-right">
 
-            </div>
+            <img src="{{ asset('Assets/img/logo.jpeg') }}" alt="food image" class="food-img food-1" width="200"
+                loading="lazy">
+            <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-1" width="25">
+            <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-2" width="15">
+            <img src="./Assets/img/circle.svg" alt="circle shape" class="shape shape-3" width="30">
+            <img src="./Assets/img/ring.svg" alt="ring shape" class="shape shape-4" width="60">
+            <img src="./Assets/img/ring.svg" alt="ring shape" class="shape shape-5" width="40">
+
+        </div></div>
+            
 
         </section>
 
@@ -133,7 +134,7 @@
 
             <div class="about-right">
 
-                <h2 class="section-title">Lorem Ipsum</h2>
+                <h2 class="section-title">Sobre Nostros</h2>
 
                 <p class="section-text">
                     <br>
@@ -144,12 +145,10 @@
                     fringilla dictum consequat. Quisque tristique varius urna ac volutpat. Aenean gravida dolor et mi
                     pulvinar pretium.
                 </p>
-
-                <p class="section-text">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed feugiat nibh, vel tincidunt sem.
-                    Pellentesque convallis, leo quis tempus ullamcorper, lorem justo egestas quam, consectetur imperdiet
-                    quam metus nec nisi.
-                </p>
+                <button class="btn btn-secondary btn-icon">
+                  <img src="{{ asset('/Assets/img/arrow.svg')}}" alt="menu icon">
+                  Conócenos
+              </button>
                 <!--
                                                     <img src="./Assets/img/signature.png" alt="signature" class="signature" width="150">
                                             -->
@@ -283,8 +282,10 @@
 
         <section class="about">
           <div class="section-title">
-            Ubicación:
-            <div class="section-text">Av. Canta Callao Mz. A. RI Lt. 19 Urb. Virgen del Rosario - SMP</div>
+            <h2>Ubicación:</h2>
+            <div class="section-text">
+              <a class="direccion-link" href="https://goo.gl/maps/An2Jv9rsgH9b6VqEA" target="_blank" rel="noopener noreferrer">Av. Canta Callao Mz. A. RI Lt. 19 Urb. Virgen del Rosario - SMP</a>
+              </div>
           </div>
           <div>
             <iframe src="https://www.google.com/maps/d/embed?mid=12nNOk7khhSzJ_f-y-HqERVY1R5M&ehbc=2E312F" width="100%" height="500"></iframe>

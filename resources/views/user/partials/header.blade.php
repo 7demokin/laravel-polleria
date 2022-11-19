@@ -9,13 +9,19 @@
 
             <ul class="navbar-nav">
                 <li>
-                    <a href="#Inicio" class="nav-link">Inicio</a>
+                    <a href="{{ route('home') }}" class="nav-link">Inicio</a>
                 </li>
                 <li>
-                    <a href="#Nosotros" class="nav-link">Nosotros</a>
+                    <a href="{{ route('about') }}" class="nav-link">Nosotros</a>
                 </li>
                 <li>
-                    <a href="#Carta" class="nav-link">Carta</a>
+                    <a href="{{  route('menu') }}" class="nav-link">Carta</a>
+                </li>
+                <li>
+                    <a href="#!" class="nav-link">Galeria</a>
+                </li>
+                <li>
+                    <a href="#!" class="nav-link">Contacto</a>
                 </li>
             </ul>
 
