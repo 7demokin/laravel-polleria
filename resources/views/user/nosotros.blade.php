@@ -21,12 +21,8 @@
 
         <p class="section-text">
             <br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sed feugiat nibh, vel tincidunt sem.
-            Pellentesque convallis, leo quis tempus ullamcorper, lorem justo egestas quam, consectetur imperdiet
-            quam metus nec nisi. Maecenas varius faucibus erat, non congue libero. Nullam fringilla ultrices quam id
-            tincidunt. Mauris et tortor varius, congue leo sed, consequat mi. Vivamus vitae urna arcu. Vivamus
-            fringilla dictum consequat. Quisque tristique varius urna ac volutpat. Aenean gravida dolor et mi
-            pulvinar pretium.
+            Somos Pollos y Parrilas Edualdo y Familia, y nos distinguimos por brindar el Mejor Pollo a la Brasa, Parrillas y Chifas. El éxito esta en el Delicioso Sabor de nuestro platos, lo cual nos ha permitido seguir creciendo y ser la preferencia de miles de clientes.
+
         </p>
     </div>
 </section>

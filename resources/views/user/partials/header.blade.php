@@ -18,6 +18,9 @@
                     <a href="{{  route('menu') }}" class="nav-link">Carta</a>
                 </li>
                 <li>
+                    <a href="{{  route('promotions') }}" class="nav-link">Promociones</a>
+                </li>
+                <li>
                     <a href="#!" class="nav-link">Galeria</a>
                 </li>
                 <li>

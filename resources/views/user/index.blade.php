@@ -1,7 +1,7 @@
 @extends('user.layout', ['title' => $title, 'description' => $description, 'logo' => $logo])
 @section('scripts')
     <script>
-        /*
+        
         var swiper = new Swiper(".swiper-carrusel", {
             loop: true,
             pagination: {
@@ -11,7 +11,7 @@
             autoplay: {
                 delay: 5000,
             },
-        });*/
+        });
         
     </script>
 @endsection
@@ -19,12 +19,12 @@
     <main>
 
             <!-- Swiper -->
-<!--
+
         <section class="carrusel">
             <div class="swiper swiper-carrusel">
                 <div class="swiper-wrapper">
                     <div class="swiper-slide">
-                        <img src="{{ asset('Assets/img/banner/banner1.jpg') }}" alt="{{ $marca }}"
+                        <img src="{{ asset('Assets/img/banner/banner1.png') }}" alt="{{ $marca }}"
                             class="swiper-carrusel-image">
                     </div>
                     <div class="swiper-slide">
@@ -36,22 +36,14 @@
                             class="swiper-carrusel-image">
                     </div>
                     <div class="swiper-slide">
-                        <img src="{{ asset('Assets/img/banner/banner4.jpg') }}" alt="{{ $marca }}"
-                            class="swiper-carrusel-image">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="{{ asset('Assets/img/banner/banner5.jpg') }}" alt="{{ $marca }}"
-                            class="swiper-carrusel-image">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="{{ asset('Assets/img/banner/banner6.jpeg') }}" alt="{{ $marca }}"
+                        <img src="{{ asset('Assets/img/banner/banner4.jpeg') }}" alt="{{ $marca }}"
                             class="swiper-carrusel-image">
                     </div>
                 </div>
                 <div class="swiper-pagination"></div>
             </div>
         </section>
-    -->
+    
         <!--
                                                   - #HOME SECTION
                                                 -->
@@ -67,7 +59,7 @@
             <p class="main-heading">Ven y disfruta con toda la familia!</p>
 
             <p class="home-text">
-                Echa un vistazo a los contundentes pollos a la brasa, parrillas, y refrescantes bebidas para acompañar. Haz tu pedido para disfrutar el sabor de siempre a un simple clic.
+              Somos Pollos y Parrilas Edualdo y Familia, y nos distinguimos por brindar el Mejor Pollo a la Brasa, Parrillas y Chifas. El éxito esta en el Delicioso Sabor de nuestro platos, lo cual nos ha permitido seguir creciendo y ser la preferencia de miles de clientes.
             </p>
 
             <div class="btn-group">
@@ -250,8 +242,9 @@
                 <a href="#">
                     <div class="product-card">
                         <div class="img-box">
-                            <img src="{{ $producto->imagen != null ? $producto->imagen : asset('Assets/img/no-pictures.png') }}" alt="product image"
-                                class="product-img" width="200" loading="lazy" alt="{{ $producto->nombre }}">
+                          <img src="{{ $producto->imagen != null ? asset('Assets/img/products/'.$producto->imagen)  : asset('Assets/img/no-pictures.png') }}"
+                          class="product-img" loading="lazy"
+                          alt="{{ $producto->nombre }}">
                         </div>
                         <div class="product-content">
                             <div class="wrapper">
