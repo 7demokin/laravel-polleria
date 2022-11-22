@@ -17,8 +17,10 @@
             cursor: pointer;
             padding: 14px 16px;
             transition: 0.3s;
+            /*
             border-top-right-radius: 25px;
             border-bottom-right-radius: 25px;
+            */
             margin: 5px;
         }
 

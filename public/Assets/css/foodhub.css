@@ -986,7 +986,6 @@ footer {
 }
 
 .copyright {
-  margin-top: 100px;
   font-size: 16px;
   color: var(--white);
   ;
@@ -1046,31 +1045,33 @@ footer {
   padding-top: 150px;
 }
 
-.pb-150{
+.pb-150 {
   padding-bottom: 150px;
 }
 
-.pb-50{
+.pb-50 {
   padding-bottom: 50px;
 }
-
-.pt-50{
+.pt-150 {
+  padding-top: 150px;
+}
+.pt-50 {
   padding-top: 50px;
 }
 
-.text-center{
+.text-center {
   text-align: center !important;
 }
 
-.d-none{
+.d-none {
   display: none;
 }
 
-.w-100{
+.w-100 {
   width: 100% !important;
 }
 
-.mw-100{
+.mw-100 {
   max-width: 100% !important;
 }
 
@@ -1079,6 +1080,7 @@ footer {
     --py: 100px;
     --mw: 950px;
   }
+
   .section {
     align-items: center;
     padding: var(--py) var(px) 120px;
@@ -1090,10 +1092,102 @@ footer {
   :root {
     --mw: 550px;
   }
+
   .section {
     max-width: var(--mw);
     margin-inline: auto;
   }
 }
 
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-direction: row;
+  justify-content: start;
+}
 
+.btn-group-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.align-items-center {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  column-gap: 10%;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+
+.vertical-card .img-box {
+  position: relative;
+  overflow: hidden;
+  border: 5px solid #fff;
+  padding: 15px;
+  border-radius: 100px;
+}
+
+.vertical-card img {
+  width: auto;
+  height: 100px;
+  object-fit: cover;
+  transition: var(--default-transition);
+}
+
+.vertical-card:hover {
+  transform: scale(1.05);
+}
+
+.vertical-card .small {
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.vertical-card .text {
+  font-size: var(--fs-4);
+  color: var(--white);
+  line-height: 1.6;
+  letter-spacing: 0.4px;
+  margin-bottom: 15px;
+  padding-top: 20px;
+}
+
+.filter-invert {
+  filter: invert(100%);
+}
+
+
+
+
+
+@media (max-width: 570px) {
+  .btn-group, .btn-group-center {
+    flex-direction: column;
+  }
+  .align-items-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .vertical-card img {
+    width: auto;
+    height: auto;
+    transition: var(--default-transition);
+  }
+
+  .vertical-card .img-box {
+    margin: auto;
+  }
+}

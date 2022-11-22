@@ -18,3 +18,5 @@ Route::get("/", [PublicController::class, 'index'])->name("home");
 Route::get("/nosotros", [PublicController::class, 'about'])->name("about");
 Route::get("/carta", [PublicController::class, 'menu'])->name("menu");
 Route::get("/promociones", [PublicController::class, 'promotions'])->name("promotions");
+Route::get("/galeria", [PublicController::class, 'gallery'])->name("gallery");
+Route::get("/contacto", [PublicController::class, 'contact'])->name("contact");

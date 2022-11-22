@@ -21,10 +21,10 @@
                     <a href="{{  route('promotions') }}" class="nav-link">Promociones</a>
                 </li>
                 <li>
-                    <a href="#!" class="nav-link">Galeria</a>
+                    <a href="{{ route('gallery') }}" class="nav-link">Galeria</a>
                 </li>
                 <li>
-                    <a href="#!" class="nav-link">Contacto</a>
+                    <a href="{{ route('contact') }}" class="nav-link">Contacto</a>
                 </li>
             </ul>
 

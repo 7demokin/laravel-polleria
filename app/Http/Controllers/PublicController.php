@@ -64,4 +64,18 @@ class PublicController extends Controller
         }
         return view($this->data["ruta"] .".promociones")->with($this->data);
     }
+
+    public function gallery(Request $request){
+        $this->data["title"] = 'Galeria';
+        $this->data["description"] = $this->data["marca"];
+
+        return view($this->data["ruta"] .".galeria")->with($this->data);
+    }
+
+    public function contact(Request $request){
+        $this->data["title"] = 'Contacto';
+        $this->data["description"] = $this->data["marca"];
+
+        return view($this->data["ruta"] .".contacto")->with($this->data);
+    }
 }
