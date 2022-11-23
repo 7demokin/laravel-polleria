@@ -47,7 +47,7 @@ class PublicController extends Controller
         $this->data["categorias"] = Categoria::where('estado', 'A')->get();
         
         foreach ($this->data["categorias"] as $key => $value) {
-            $productos = Producto::where('categoria_id', $value['id'])->orderBy('precio','desc')->get();
+            $productos = Producto::where('estado', 'A')->where('categoria_id', $value['id'])->orderBy('precio','desc')->get();
             $this->data["categorias"][$key]['productos'] = $productos;
         }
         
@@ -57,7 +57,7 @@ class PublicController extends Controller
     public function promotions(Request $request){
         $this->data["title"] = 'Promociones';
         $this->data["description"] = $this->data["marca"];
-        $this->data["productos"] = Producto::where('categoria_id', 16)->orderBy('precio','desc')->get();
+        $this->data["productos"] = Producto::where('estado', 'A')->where('categoria_id', 16)->orderBy('precio','desc')->get();
         foreach ($this->data["productos"] as $key => $value) {
             $categoria = Categoria::find($value['categoria_id']);
             $this->data["productos"][$key]['categoria'] = $categoria;
@@ -77,5 +77,19 @@ class PublicController extends Controller
         $this->data["description"] = $this->data["marca"];
 
         return view($this->data["ruta"] .".contacto")->with($this->data);
+    }
+
+    public function product(Request $request, $id){
+        $this->data["productos"] = Producto::where('estado', 'A')->get()->random(3);
+        foreach ($this->data["productos"] as $key => $value) {
+            $categoria = Categoria::find($value['categoria_id']);
+            $this->data["productos"][$key]['categoria'] = $categoria;
+        }
+        $this->data["producto"] = Producto::where('estado', 'A')->find($id);
+        $this->data["producto"]['categoria'] = Categoria::find($this->data["producto"]->categoria_id);
+        $this->data["title"] = $this->data["producto"]->nombre;
+        $this->data["description"] = $this->data["producto"]->nombre;
+
+        return view($this->data["ruta"] .".producto")->with($this->data);
     }
 }

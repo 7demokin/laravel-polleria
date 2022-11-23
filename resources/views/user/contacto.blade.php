@@ -1,7 +1,7 @@
 @extends('user.layout', ['title' => $title, 'description' => $description, 'logo' => $logo])
 @section('content')
     <section class="section">
-        <div class="align-items-center pb-150">
+        <div class="align-items-center pt-50 pb-50">
             <a href="tel:+51016934157" target="_blank">
                 <div class="vertical-card">
                     <div class="img-box">

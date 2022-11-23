@@ -80,7 +80,7 @@
                         <h2 class="d-none">{{ $categoria->nombre }}</h2>
                     <div class="products-grid">
                         @foreach ($categoria->productos as $producto)
-                            <a href="#">
+                            <a href="{{ route('product', $producto->id) }}">
                                 <div class="product-card">
                                     <div class="img-box">
                                         <img src="{{ $producto->imagen != null ? asset('Assets/img/products/'.$producto->imagen)  : asset('Assets/img/no-pictures.png') }}"

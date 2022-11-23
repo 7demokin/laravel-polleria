@@ -43,8 +43,8 @@
         </section>
 
         <!--
-                                                                                              - #HOME SECTION
-                                                                                            -->
+                                                                                                  - #HOME SECTION
+                                                                                                -->
 
         <section id="Inicio">
             <div class="title-div">
@@ -66,14 +66,14 @@
 
                         <a href="{{ route('menu') }}">
                             <button class="btn btn-primary btn-icon">
-                                <img src="{{ asset('/Assets/img/menu.svg') }}" alt="menu icon">
+                                <img src="{{ asset('/Assets/img/menu.svg') }}" alt="carta icon">
                                 Nuestra Carta
                             </button>
                         </a>
 
                         <a href="{{ route('about') }}">
                             <button class="btn btn-secondary btn-icon">
-                                <img src="{{ asset('/Assets/img/arrow.svg') }}" alt="menu icon">
+                                <img src="{{ asset('/Assets/img/arrow.svg') }}" alt="flecha icon">
                                 Conócenos
                             </button>
                         </a>
@@ -84,15 +84,15 @@
 
                 <div class="home-right">
 
-                    <img src="{{ asset('Assets/img/logo.jpeg') }}" alt="food image" class="food-img food-1" width="200"
+                    <img src="{{ asset('Assets/img/logo.jpeg') }}" alt="{{ $marca }}" class="food-img food-1" width="200"
                         loading="lazy">
-                    <img src="{{ asset('Assets/img/circle.svg') }}" alt="circle shape" class="shape shape-2"
+                    <img src="{{ asset('Assets/img/circle.svg') }}" class="shape shape-2"
                         width="15">
-                    <img src="{{ asset('Assets/img/circle.svg') }}" alt="circle shape" class="shape shape-3"
+                    <img src="{{ asset('Assets/img/circle.svg') }}" class="shape shape-3"
                         width="30">
-                    <img src="{{ asset('Assets/img/ring.svg') }}" alt="ring shape" class="shape shape-4" width="60">
-                    <img src="{{ asset('Assets/img/ring.svg') }}" alt="ring shape" class="shape shape-5" width="40">
-                    <img src="{{ asset('Assets/img/circle.svg') }}" alt="circle shape" class="shape shape-1"
+                    <img src="{{ asset('Assets/img/ring.svg') }}" class="shape shape-4" width="60">
+                    <img src="{{ asset('Assets/img/ring.svg') }}"  class="shape shape-5" width="40">
+                    <img src="{{ asset('Assets/img/circle.svg') }}" class="shape shape-1"
                         width="25">
 
                 </div>
@@ -106,28 +106,28 @@
 
 
         <!--
-                                                                                              - #ABOUT SECTION
-                                                                                            -->
+                                                                                                  - #ABOUT SECTION
+                                                                                                -->
 
         <section class="about" id="Nosotros">
 
             <div class="about-left">
 
                 <div class="img-box">
-                    <img src="{{ asset('Assets/img/gallery/img-1.jpeg') }}" alt="about image" class="about-img"
+                    <img src="{{ asset('Assets/img/gallery/img-1.jpeg') }}" alt="{{ $marca }}" class="about-img"
                         width="250">
                 </div>
                 <!--
-                                                                                                <div class="abs-content-box">
-                                                                                                  <div class="dotted-border">
-                                                                                                    <p class="number-lg">17</p>
-                                                                                                    <p class="text-md">Years <br> Experiense</p>
-                                                                                                  </div>
-                                                                                                </div>
-                                                                                        -->
+                                                                                                    <div class="abs-content-box">
+                                                                                                      <div class="dotted-border">
+                                                                                                        <p class="number-lg">17</p>
+                                                                                                        <p class="text-md">Years <br> Experiense</p>
+                                                                                                      </div>
+                                                                                                    </div>
+                                                                                            -->
 
-                <img src="{{ asset('Assets/img/circle.svg') }}" alt="circle shape" class="shape shape-6" width="20">
-                <img src="{{ asset('Assets/img/circle.svg') }}" alt="circle shape" class="shape shape-7" width="30">
+                <img src="{{ asset('Assets/img/circle.svg') }}"class="shape shape-6" width="20">
+                <img src="{{ asset('Assets/img/circle.svg') }}"class="shape shape-7" width="30">
                 <img src="{{ asset('Assets/img/ring.svg') }}" alt="ring shape" class="shape shape-8" width="35">
                 <img src="{{ asset('Assets/img/ring.svg') }}" alt="ring shape" class="shape shape-9" width="80">
 
@@ -146,21 +146,21 @@
                 <div class="btn-group">
                     <a href="{{ route('about') }}">
                         <button class="btn btn-primary btn-icon">
-                            <img src="{{ asset('Assets/img/arrow.svg') }}" alt="menu icon">
+                            <img src="{{ asset('Assets/img/arrow.svg') }}" alt="flecha icon">
                             Conócenos
                         </button>
                     </a>
                     <a href="{{ route('gallery') }}">
                         <button class="btn btn-secondary btn-icon">
-                            <img src="{{ asset('Assets/img/gallery.png') }}" height="26" alt="menu icon">
+                            <img src="{{ asset('Assets/img/gallery.png') }}" height="26" alt="galeria icon">
                             Galeria
                         </button>
                     </a>
 
                 </div>
                 <!--
-                                                                                                <img src="./Assets/img/signature.png" alt="signature" class="signature" width="150">
-                                                                                        -->
+                                                                                                    <img src="./Assets/img/signature.png" alt="signature" class="signature" width="150">
+                                                                                            -->
             </div>
 
         </section>
@@ -170,80 +170,80 @@
 
 
         <!--
-                                                                                              - #SERVICES SECTION
-                                                                                            -->
+                                                                                                  - #SERVICES SECTION
+                                                                                                -->
         <!--
-                                                                                            <section class="services" id="services">
+                                                                                                <section class="services" id="services">
 
-                                                                                              <div class="service-card">
+                                                                                                  <div class="service-card">
 
-                                                                                                <p class="card-number">01</p>
+                                                                                                    <p class="card-number">01</p>
 
-                                                                                                <h3 class="card-heading">We are located in the city center</h3>
+                                                                                                    <h3 class="card-heading">We are located in the city center</h3>
 
-                                                                                                <p class="card-text">
-                                                                                                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                                                                                                </p>
+                                                                                                    <p class="card-text">
+                                                                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                                                                    </p>
 
-                                                                                              </div>
+                                                                                                  </div>
 
-                                                                                              <div class="service-card">
+                                                                                                  <div class="service-card">
 
-                                                                                                <p class="card-number">02</p>
+                                                                                                    <p class="card-number">02</p>
 
-                                                                                                <h3 class="card-heading">Fresh ingredients from organic farms</h3>
+                                                                                                    <h3 class="card-heading">Fresh ingredients from organic farms</h3>
 
-                                                                                                <p class="card-text">
-                                                                                                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                                                                                                </p>
+                                                                                                    <p class="card-text">
+                                                                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                                                                    </p>
 
-                                                                                              </div>
+                                                                                                  </div>
 
-                                                                                              <div class="service-card">
+                                                                                                  <div class="service-card">
 
-                                                                                                <p class="card-number">03</p>
+                                                                                                    <p class="card-number">03</p>
 
-                                                                                                <h3 class="card-heading">Own fast delivery. 30 min Maximum</h3>
+                                                                                                    <h3 class="card-heading">Own fast delivery. 30 min Maximum</h3>
 
-                                                                                                <p class="card-text">
-                                                                                                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                                                                                                </p>
+                                                                                                    <p class="card-text">
+                                                                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                                                                    </p>
 
-                                                                                              </div>
+                                                                                                  </div>
 
-                                                                                              <div class="service-card">
+                                                                                                  <div class="service-card">
 
-                                                                                                <p class="card-number">04</p>
+                                                                                                    <p class="card-number">04</p>
 
-                                                                                                <h3 class="card-heading">Professional, experienced chefs</h3>
+                                                                                                    <h3 class="card-heading">Professional, experienced chefs</h3>
 
-                                                                                                <p class="card-text">
-                                                                                                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                                                                                                </p>
+                                                                                                    <p class="card-text">
+                                                                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                                                                    </p>
 
-                                                                                              </div>
+                                                                                                  </div>
 
-                                                                                              <div class="service-card">
+                                                                                                  <div class="service-card">
 
-                                                                                                <p class="card-number">05</p>
+                                                                                                    <p class="card-number">05</p>
 
-                                                                                                <h3 class="card-heading">The highest standards of service</h3>
+                                                                                                    <h3 class="card-heading">The highest standards of service</h3>
 
-                                                                                                <p class="card-text">
-                                                                                                  Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
-                                                                                                </p>
+                                                                                                    <p class="card-text">
+                                                                                                      Porro nemo veniam necessitatibus praesentium eligendi rem temporibus adipisci quo modi numquam.
+                                                                                                    </p>
 
-                                                                                              </div>
+                                                                                                  </div>
 
-                                                                                            </section>
-                                                                                        -->
+                                                                                                </section>
+                                                                                            -->
 
 
 
 
         <!--
-                                                                                              - #PRODUCT SECTION
-                                                                                            -->
+                                                                                                  - #PRODUCT SECTION
+                                                                                                -->
 
         <section class="product" id="Carta">
 
@@ -290,7 +290,7 @@
                 </a>
                 <a href="{{ route('promotions') }}">
                     <button class="btn btn-secondary btn-icon">
-                        <img src="{{ asset('Assets/img/discount.png') }}" height="26" alt="menu icon">
+                        <img src="{{ asset('Assets/img/discount.png') }}" height="26" alt="descuento icon">
                         Ver Promociones
                     </button>
                 </a>
@@ -314,7 +314,7 @@
                 </div>
             </div>
             <div class="align-items-center pb-150">
-              <a href="tel:+51016934157" target="_blank">
+                <a href="tel:+51016934157" target="_blank">
                     <div class="vertical-card">
                         <div class="img-box">
                             <img src="{{ asset('Assets/img/phone.png') }}" class="filter-invert" loading="lazy">
@@ -347,92 +347,93 @@
                 </a>
             </div>
         </section>
+        
 
 
 
 
         <!--
-                                                                                              - #TESTIMONIALS SECTION
+                                                                                                  - #TESTIMONIALS SECTION
+                                                                                                -->
+        <!--
+                                                                                                <section class="testimonials" id="testimonials">
+
+                                                                                                  <h2 class="section-title">What our customers say?</h2>
+
+                                                                                                  <p class="section-text">
+                                                                                                    Consectetur numquam poro nemo veniam
+                                                                                                    eligendi rem adipisci quo modi.
+                                                                                                  </p>
+
+                                                                                                  <div class="testimonials-grid">
+
+                                                                                                    <div class="testimonials-card">
+
+                                                                                                      <h4 class="card-title">Very tasty</h4>
+
+                                                                                                      <div class="testimonials-rating">
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                      </div>
+
+                                                                                                      <p class="testimonials-text">
+                                                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi
+                                                                                                        inventore possimus
+                                                                                                        laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus
+                                                                                                        tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam
+                                                                                                        labore,
+                                                                                                        aliquam dolor harum!
+                                                                                                      </p>
+
+                                                                                                      <div class="customer-info">
+                                                                                                        <div class="customer-img-box">
+                                                                                                          <img src="./Assets/img/testimonials1.jpg" alt="customer image" class="customer-img" width="100"
+                                                                                                            loading="lazy">
+                                                                                                        </div>
+
+                                                                                                        <h5 class="customer-name">Emma Newman</h5>
+                                                                                                      </div>
+
+                                                                                                    </div>
+
+                                                                                                    <div class="testimonials-card">
+
+                                                                                                      <h4 class="card-title">I have lunch here every day</h4>
+
+                                                                                                      <div class="testimonials-rating">
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                        <ion-icon name="star"></ion-icon>
+                                                                                                      </div>
+
+                                                                                                      <p class="testimonials-text">
+                                                                                                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi
+                                                                                                        inventore possimus
+                                                                                                        laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus
+                                                                                                        tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam
+                                                                                                        labore,
+                                                                                                        aliquam dolor harum!
+                                                                                                      </p>
+
+                                                                                                      <div class="customer-info">
+                                                                                                        <div class="customer-img-box">
+                                                                                                          <img src="./Assets/img/testimonials2.jpg" alt="customer image" class="customer-img" width="100"
+                                                                                                            loading="lazy">
+                                                                                                        </div>
+
+                                                                                                        <h5 class="customer-name">Paul Trueman</h5>
+                                                                                                      </div>
+
+                                                                                                    </div>
+
+                                                                                                  </div>
+
+                                                                                                </section>
                                                                                             -->
-        <!--
-                                                                                            <section class="testimonials" id="testimonials">
-
-                                                                                              <h2 class="section-title">What our customers say?</h2>
-
-                                                                                              <p class="section-text">
-                                                                                                Consectetur numquam poro nemo veniam
-                                                                                                eligendi rem adipisci quo modi.
-                                                                                              </p>
-
-                                                                                              <div class="testimonials-grid">
-
-                                                                                                <div class="testimonials-card">
-
-                                                                                                  <h4 class="card-title">Very tasty</h4>
-
-                                                                                                  <div class="testimonials-rating">
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                  </div>
-
-                                                                                                  <p class="testimonials-text">
-                                                                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi
-                                                                                                    inventore possimus
-                                                                                                    laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus
-                                                                                                    tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam
-                                                                                                    labore,
-                                                                                                    aliquam dolor harum!
-                                                                                                  </p>
-
-                                                                                                  <div class="customer-info">
-                                                                                                    <div class="customer-img-box">
-                                                                                                      <img src="./Assets/img/testimonials1.jpg" alt="customer image" class="customer-img" width="100"
-                                                                                                        loading="lazy">
-                                                                                                    </div>
-
-                                                                                                    <h5 class="customer-name">Emma Newman</h5>
-                                                                                                  </div>
-
-                                                                                                </div>
-
-                                                                                                <div class="testimonials-card">
-
-                                                                                                  <h4 class="card-title">I have lunch here every day</h4>
-
-                                                                                                  <div class="testimonials-rating">
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                    <ion-icon name="star"></ion-icon>
-                                                                                                  </div>
-
-                                                                                                  <p class="testimonials-text">
-                                                                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quis fugiat totam nobis quas unde excepturi
-                                                                                                    inventore possimus
-                                                                                                    laudantium provident, rem eligendi velit. Aut molestias, ipsa itaque laborum, natus
-                                                                                                    tempora, ut soluta animi ducimus dignissimos deserunt doloribus in reprehenderit rem accusamus! Quibusdam
-                                                                                                    labore,
-                                                                                                    aliquam dolor harum!
-                                                                                                  </p>
-
-                                                                                                  <div class="customer-info">
-                                                                                                    <div class="customer-img-box">
-                                                                                                      <img src="./Assets/img/testimonials2.jpg" alt="customer image" class="customer-img" width="100"
-                                                                                                        loading="lazy">
-                                                                                                    </div>
-
-                                                                                                    <h5 class="customer-name">Paul Trueman</h5>
-                                                                                                  </div>
-
-                                                                                                </div>
-
-                                                                                              </div>
-
-                                                                                            </section>
-                                                                                        -->
     </main>
 @endsection

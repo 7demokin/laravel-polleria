@@ -1,9 +1,8 @@
 <header>
-
     <nav class="navbar">
         <div class="navbar-wrapper">
 
-            <a href="#">
+            <a href="{{ route('home') }}">
                 <img src="{{ asset('Assets/img/' . $logo) }}" alt="logo" height="50">
             </a>
 
@@ -29,10 +28,18 @@
             </ul>
 
             <div class="navbar-btn-group">
+                <span>
+                    <a href="{{ route('contact') }}" class="nav-link-login">Ingresar</a>
+                     / 
+                    <a href="{{ route('contact') }}" class="nav-link-login">Registrar</a>
+                </span>
+
                 <button class="shopping-cart-btn">
                     <img src="{{ asset('/Assets/img/cart.svg') }}" alt="shopping cart icon" width="18">
                     <span class="count">5</span>
                 </button>
+                    
+                
                 <button class="menu-toggle-btn">
                     <span class="line one"></span>
                     <span class="line two"></span>
