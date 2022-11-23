@@ -9,21 +9,7 @@ const navToggleBtn = document.querySelector('.menu-toggle-btn');
 const shoppingCart = document.querySelector('.cart-box');
 const btnWhatsappFloat = document.querySelector('.btn-whatsapp-float');
 const btnCantidadMas = document.getElementById('btn-cantidad-mas');
-const btnCantidadMenos = document.getElementById('btn-cantidad-menos');
-const spanCantidad = document.getElementById('span-cantidad');
 
-btnCantidadMas.addEventListener('click', function () {
-  let cantidad = spanCantidad.textContent
-  spanCantidad.textContent = parseInt(cantidad)+1;
-});
-
-btnCantidadMenos.addEventListener('click', function () {
-  let cantidad = spanCantidad.textContent
-  if (parseInt(cantidad) > 1) {
-    spanCantidad.textContent = parseInt(cantidad)-1;
-  }
-  
-});
 
 // nav toggle function
 const navToggleFunc = function () {

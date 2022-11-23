@@ -66,3 +66,22 @@
         </div>
     </section>
 @endsection
+@section('scripts')
+    <script>
+        const btnCantidadMenos = document.getElementById('btn-cantidad-menos');
+const spanCantidad = document.getElementById('span-cantidad');
+
+btnCantidadMas.addEventListener('click', function () {
+  let cantidad = spanCantidad.textContent
+  spanCantidad.textContent = parseInt(cantidad)+1;
+});
+
+btnCantidadMenos.addEventListener('click', function () {
+  let cantidad = spanCantidad.textContent
+  if (parseInt(cantidad) > 1) {
+    spanCantidad.textContent = parseInt(cantidad)-1;
+  }
+  
+});
+    </script>
+@endsection
