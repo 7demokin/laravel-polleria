@@ -27,12 +27,13 @@
                         +
                     </button>
                 </div>
-            
-                    <button class="btn btn-secondary btn-icon">
-                        <img src="{{ asset('Assets/img/agregar.png') }}" height="26" alt="agregar icon">
-                        Agregar
-                    </button>
-              
+
+                <button id="btn-submit" class="btn btn-secondary btn-icon">
+                    <img id="load-btn-submit" height="26">
+                    <img id="icon-btn-submit" src="{{ asset('Assets/img/agregar.png') }}" height="26" alt="agregar icon">
+                    Agregar
+                </button>
+
             </div>
         </div>
 
@@ -41,22 +42,22 @@
         <h2 class="text-center text-white pb-50 h2">Otros Productos</h2>
         <div class="carta">
             <div class="products-grid">
-                @foreach ($productos as $producto)
-                    <a href="{{ route('product', $producto->id) }}">
+                @foreach ($productos as $obj)
+                    <a href="{{ route('product', $obj->id) }}">
                         <div class="product-card">
                             <div class="img-box">
-                                <img src="{{ $producto->imagen != null ? asset('Assets/img/products/' . $producto->imagen) : asset('Assets/img/no-pictures.png') }}"
-                                    class="product-img" loading="lazy" alt="{{ $producto->nombre }}">
+                                <img src="{{ $obj->imagen != null ? asset('Assets/img/products/' . $obj->imagen) : asset('Assets/img/no-pictures.png') }}"
+                                    class="product-img" loading="lazy" alt="{{ $obj->nombre }}">
                             </div>
                             <div class="product-content">
                                 <div class="wrapper">
-                                    <h3 class="product-name">{{ $producto->categoria->nombre }}</h3>
+                                    <h3 class="product-name">{{ $obj->categoria->nombre }}</h3>
                                     <p class="product-price">
-                                        <span class="small">S/</span>{{ $producto->precio }}
+                                        <span class="small">S/</span>{{ $obj->precio }}
                                     </p>
                                 </div>
                                 <p class="product-text">
-                                    {{ $producto->nombre }}
+                                    {{ $obj->nombre }}
                                 </p>
                             </div>
                         </div>
@@ -69,19 +70,73 @@
 @section('scripts')
     <script>
         const btnCantidadMenos = document.getElementById('btn-cantidad-menos');
-const spanCantidad = document.getElementById('span-cantidad');
+        const spanCantidad = document.getElementById('span-cantidad');
+        const btnSubmit = document.getElementById('btn-submit');
+        const iconBtnSubmit = $('#icon-btn-submit');
+        const loadBtnSubmit = $('#load-btn-submit');
+        loadBtnSubmit.hide();
+        loadBtnSubmit.attr('src', "{{ asset('Assets/img/load.gif') }}");
 
-btnCantidadMas.addEventListener('click', function () {
-  let cantidad = spanCantidad.textContent
-  spanCantidad.textContent = parseInt(cantidad)+1;
-});
+        btnCantidadMas.addEventListener('click', function() {
+            let cantidad = spanCantidad.textContent
+            spanCantidad.textContent = parseInt(cantidad) + 1;
+        });
 
-btnCantidadMenos.addEventListener('click', function () {
-  let cantidad = spanCantidad.textContent
-  if (parseInt(cantidad) > 1) {
-    spanCantidad.textContent = parseInt(cantidad)-1;
-  }
-  
-});
+        btnCantidadMenos.addEventListener('click', function() {
+            let cantidad = spanCantidad.textContent
+            if (parseInt(cantidad) > 1) {
+                spanCantidad.textContent = parseInt(cantidad) - 1;
+            }
+        });
+
+        let loadCarrito = (data) => {
+             return data.map((item) => {
+                return(`<li>
+                    <a href="#" class="cart-item">
+                        <div class="img-box">
+                            <img src="{{ asset('Assets/img/products/') }}/${item.producto.imagen}" alt="${item.producto.nombre}"
+                                class="product-img" width="50" height="50" loading="lazy">
+                        </div>
+    
+                        <h5 class="product-name">${item.producto.nombre}</h5>
+                        <p class="product-price">
+                            <span class="small">S/</span>${item.producto.precio}
+                        </p>
+                    </a>
+                </li>`)
+                
+            }).join(' ');
+        }
+
+        btnSubmit.addEventListener('click', function() {
+
+            let data = {
+                id: {{ $producto->id }},
+                cantidad: parseInt(spanCantidad.textContent),
+                _token: $('meta[name="csrf-token"]').attr('content')
+            };
+            $.ajax({
+                type: "post",
+                url: "{{ route('api.addCartItem') }}",
+                data: data,
+                beforeSend: function() {
+                    iconBtnSubmit.hide();
+                    loadBtnSubmit.show();
+                },
+                complete: function() {
+                    iconBtnSubmit.show();
+                    loadBtnSubmit.hide();
+                },
+                error: function() {
+                    toastr["error"]('Ha ocurrido un error interno!');
+                },
+                success: function(res) {
+                    toastr["success"](res.message);
+                    $('#total-carrito').html(res.data.length)
+                    $('#div-carrito').html(loadCarrito(res.data))
+                    console.log(loadCarrito(res.data))
+                }
+            });
+        });
     </script>
 @endsection

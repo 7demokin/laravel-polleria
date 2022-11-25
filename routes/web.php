@@ -19,5 +19,11 @@ Route::get("/nosotros", [PublicController::class, 'about'])->name("about");
 Route::get("/carta", [PublicController::class, 'menu'])->name("menu");
 Route::get("/promociones", [PublicController::class, 'promotions'])->name("promotions");
 Route::get("/galeria", [PublicController::class, 'gallery'])->name("gallery");
-Route::get("/contacto", [PublicController::class, 'contact'])->name("contact"); 
+Route::get("/contacto", [PublicController::class, 'contact'])->name("contact");
 Route::get("/producto/{id}", [PublicController::class, 'product'])->name("product")->where('id', '[1-9][0-9]*');
+
+Route::name('api.')->group(function () {
+    Route::post("/addCartItem", [PublicController::class, 'addCartItem'])->name("addCartItem");
+    Route::get("/getCart", [PublicController::class, 'getCart'])->name("getCart");
+
+});

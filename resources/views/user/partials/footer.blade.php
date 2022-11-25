@@ -1,5 +1,5 @@
 <footer>
-<!---
+    <!---
     <div class="footer-wrapper">
         
         <a href="#">
@@ -8,7 +8,7 @@
    
         <div class="social-link">
          -->
-        <!--
+    <!--
             Dirección: <a href="https://goo.gl/maps/An2Jv9rsgH9b6VqEA" target="_blanck">Av. Canta Callao Mz. A. RI Lt. 19 Urb. Virgen del Rosario - SMP </a>
             <a href="#">
                 <ion-icon name="logo-twitter"></ion-icon>
@@ -29,3 +29,6 @@
     </div>
 
 </footer>
+<a href="https://api.whatsapp.com/send?phone=51928307609" class="btn-whatsapp-float" target="_blank">
+    <img src="{{ asset('Assets/img/whatsapp.png') }}" class="filter-invert" loading="lazy">
+</a>
