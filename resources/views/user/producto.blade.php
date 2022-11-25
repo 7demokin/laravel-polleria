@@ -89,24 +89,7 @@
             }
         });
 
-        let loadCarrito = (data) => {
-             return data.map((item) => {
-                return(`<li>
-                    <a href="#" class="cart-item">
-                        <div class="img-box">
-                            <img src="{{ asset('Assets/img/products/') }}/${item.producto.imagen}" alt="${item.producto.nombre}"
-                                class="product-img" width="50" height="50" loading="lazy">
-                        </div>
-    
-                        <h5 class="product-name">${item.producto.nombre}</h5>
-                        <p class="product-price">
-                            <span class="small">S/</span>${item.producto.precio}
-                        </p>
-                    </a>
-                </li>`)
-                
-            }).join(' ');
-        }
+        
 
         btnSubmit.addEventListener('click', function() {
 
