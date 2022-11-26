@@ -24,3 +24,17 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.0/css/lightgallery.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.7.0/css/lightgallery-bundle.min.css">
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+<style>
+    .cd-form label.cd-email {
+        background-image: url({{ asset('Assets/img/email.png') }});
+    }
+    .cd-form label.cd-password {
+        background-image: url({{ asset('Assets/img/password.png') }});
+    }
+    .cd-form label.cd-user {
+        background-image: url({{ asset('Assets/img/user.png') }});
+    }
+    .cd-form label.cd-mobile {
+        background-image: url({{ asset('Assets/img/smartphone.png') }});
+    }
+</style>

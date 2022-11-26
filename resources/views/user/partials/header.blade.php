@@ -29,9 +29,9 @@
 
             <div class="navbar-btn-group">
                 <span>
-                    <a href="{{ route('contact') }}" class="nav-link-login">Ingresar</a>
+                    <a class="nav-link-login cd-login">Ingresar</a>
                     /
-                    <a href="{{ route('contact') }}" class="nav-link-login">Registrar</a>
+                    <a class="nav-link-login cd-signup">Registrar</a>
                 </span>
 
                 <button class="shopping-cart-btn">

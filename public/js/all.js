@@ -17897,3 +17897,5 @@ for (let i = 0; i < navLinks.length; i++) {
     navLinks[i].addEventListener("click", navToggleFunc);
 }
 
+// -- LOGIN MODAL --
+
