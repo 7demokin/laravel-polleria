@@ -44,22 +44,24 @@
 
         <div id="cd-login">
             <!-- log in form -->
-            <form class="cd-form">
+                <form id="signin-form" class="cd-form" action="{{ route('api.login') }}" enctype="multipart/form-data">
+
+                @csrf
                 <p class="fieldset">
-                    <label class="image-replace cd-email" for="signin-email"></label>
-                    <input class="full-width has-padding has-border" id="signin-email" type="email"
-                        placeholder="Correo">
+                    <label class="image-replace cd-email" for="signin-email">E-mail</label>
+                    <input class="full-width has-padding has-border" id="signin-email" name="signin-email"
+                        type="email" placeholder="Correo">
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-password" for="signin-password">Password</label>
-                    <input class="full-width has-padding has-border" id="signin-password" type="password"
+                    <input class="full-width has-padding has-border" id="signin-password" name="signin-password" type="password"
                         placeholder="Contraseña">
                     <a href="#0" class="hide-password">Mostrar</a>
                 </p>
 
                 <p class="fieldset">
-                    <input type="checkbox" id="remember-me" checked>
+                    <input type="checkbox" id="remember-me" name="remember-me" checked>
                     <label for="remember-me">Recuerdame</label>
                 </p>
 
@@ -74,37 +76,38 @@
 
         <div id="cd-signup">
             <!-- sign up form -->
-            <form class="cd-form">
+            <form id="signup-form" class="cd-form" action="{{ route('api.register') }}" enctype="multipart/form-data">
+                @csrf
                 <p class="fieldset">
                     <label class="image-replace cd-user" for="signup-firstname">Nombres</label>
-                    <input class="full-width has-padding has-border" id="signup-firstname" type="text"
-                        placeholder="Nombres">
+                    <input class="full-width has-padding has-border" id="signup-firstname" name="signup-firstname"
+                        type="text" placeholder="Nombres">
                     <!--<span class="cd-error-message">Error message here!</span>-->
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-user" for="signup-lastname">Apellidos</label>
-                    <input class="full-width has-padding has-border" id="signup-lastname" type="text"
-                        placeholder="Apellidos">
+                    <input class="full-width has-padding has-border" id="signup-lastname" name="signup-lastname"
+                        type="text" placeholder="Apellidos">
                 </p>
                 <p class="fieldset">
                     <label class="image-replace cd-mobile" for="signup-mobile">Celular</label>
-                    <input class="full-width has-padding has-border" id="signup-mobile" type="text"
-                        placeholder="Celular">
+                    <input class="full-width has-padding has-border" id="signup-mobile" name="signup-mobile"
+                        type="text" placeholder="Celular">
                 </p>
                 <p class="fieldset">
                     <label class="image-replace cd-email" for="signup-email">E-mail</label>
-                    <input class="full-width has-padding has-border" id="signup-email" type="email"
-                        placeholder="Correo">
+                    <input class="full-width has-padding has-border" id="signup-email" name="signup-email"
+                        type="email" placeholder="Correo">
                 </p>
 
                 <p class="fieldset">
                     <label class="image-replace cd-password" for="signup-password">Password</label>
-                    <input class="full-width has-padding has-border" id="signup-password" type="password"
-                        placeholder="Contraseña">
+                    <input class="full-width has-padding has-border" id="signup-password" name="signup-password"
+                        type="password" placeholder="Contraseña">
                     <a href="#0" class="hide-password">Mostrar</a>
                 </p>
-<!--
+                <!--
                 <p class="fieldset">
                     <input type="checkbox" id="accept-terms">
                     <label for="accept-terms">I agree to the <a href="#0">Terms</a></label>

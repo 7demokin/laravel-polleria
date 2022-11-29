@@ -17854,7 +17854,12 @@ return jQuery;
 //# sourceMappingURL=bootstrap.bundle.js.map
 
 "use strict";
-
+// jQuery messages
+const msgRequired = "Campo vacío!"
+const msgMaxlength = (len) => `Debe ser menor a ${len+1} caracteres!`
+const msgMinlength = (len) => `Debe ser mayor a ${len-1} caracteres!`
+const msgDigits = "Deben ser solo números!"
+const msgEmail = "Deben ser un correo válido!"
 // navbar variables
 const nav = document.querySelector(".navbar-nav");
 const navLinks = document.querySelectorAll(".nav-link");

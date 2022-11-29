@@ -11,6 +11,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.0/plugins/thumbnail/lg-thumbnail.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.7.0/plugins/autoplay/lg-autoplay.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 <script>
     toastr.options = {
         "closeButton": true,
@@ -65,7 +66,7 @@
 
     /* ---Login Modal--- */
     jQuery(document).ready(function($) {
-        var $form_modal = $('.cd-user-modal'),
+        let $form_modal = $('.cd-user-modal'),
             $form_login = $form_modal.find('#cd-login'),
             $form_signup = $form_modal.find('#cd-signup'),
             $form_forgot_password = $form_modal.find('#cd-reset-password'),
@@ -107,7 +108,7 @@
 
         //hide or show password
         $('.hide-password').on('click', function() {
-            var $this = $(this),
+            let $this = $(this),
                 $password_field = $this.prev('input');
 
             ('password' == $password_field.attr('type')) ? $password_field.attr('type', 'text'):
@@ -160,7 +161,7 @@
             if (this.setSelectionRange) {
                 // ... then use it (Doesn't work in IE)
                 // Double the length because Opera is inconsistent about whether a carriage return is one character or two. Sigh.
-                var len = $(this).val().length * 2;
+                let len = $(this).val().length * 2;
                 this.setSelectionRange(len, len);
             } else {
                 // ... otherwise replace the contents with itself
@@ -173,4 +174,155 @@
     jQuery('#cody-info ul li').eq(1).on('click', function() {
         $('#cody-info').hide();
     });
+
+
+
+    function sendPostForm(form) {
+        // Capturamnos el boton de envío
+        let btnEnviar = $(form).find('input[type=submit]');
+        let btnTexto = btnEnviar.val();
+        $.ajax({
+            type: 'POST',
+            url: $(form).attr("action"),
+            data: $(form).serialize(),
+            beforeSend: function() {
+                /*
+                 * Esta función se ejecuta durante el envió de la petición al
+                 * servidor.
+                 * */
+                // btnEnviar.text("Enviando"); Para button 
+                btnEnviar.val("Procesando..."); // Para input de tipo button
+                btnEnviar.attr("disabled", "disabled");
+            },
+            complete: function() {
+                /*
+                 * Se ejecuta al termino de la petición
+                 * */
+                btnEnviar.val(btnTexto);
+                btnEnviar.removeAttr("disabled");
+            },
+            success: function(res) {
+                /*
+                 * Se ejecuta cuando termina la petición y esta ha sido
+                 * correcta
+                 * */
+                toastr["success"](res.message);
+                return true
+            },
+            error: function(res) {
+                /*
+                 * Se ejecuta si la peticón ha sido erronea
+                 * */
+                toastr["error"](res.responseJSON.message);
+                return false;
+            }
+        });
+        // Nos permite cancelar el envio del formulario
+
+    }
+
+
+
+    $("#signup-form").submit(function(e) {
+        e.preventDefault();
+    }).validate({
+        submitHandler: function(form) {
+            return sendPostForm(form) ? location.reload() : false
+        },
+        rules: {
+            "signup-firstname": {
+                required: true,
+                maxlength: 50
+            },
+            "signup-lastname": {
+                required: true,
+                maxlength: 50
+            },
+            "signup-mobile": {
+                required: true,
+                digits: true,
+                minlength: 9,
+                maxlength: 9
+            },
+            "signup-email": {
+                required: true,
+                maxlength: 50,
+                email: true
+            },
+            "signup-password": {
+                required: true,
+                maxlength: 50,
+            }
+        },
+        messages: {
+            "signup-firstname": {
+                required: msgRequired,
+                maxlength: msgMaxlength(50)
+            },
+            "signup-lastname": {
+                required: msgRequired,
+                maxlength: msgMaxlength(50)
+            },
+            "signup-mobile": {
+                required: msgRequired,
+                digits: msgDigits,
+                minlength: msgMinlength(9),
+                maxlength: msgMaxlength(9)
+            },
+            "signup-email": {
+                required: msgRequired,
+                maxlength: msgMaxlength(50),
+                email: true
+            },
+            "signup-password": {
+                required: msgRequired,
+                maxlength: msgMaxlength(50),
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.insertAfter(element.parent('.fieldset'));
+        },
+    });
+
+
+    $("#signin-form").submit(function(e) {
+        e.preventDefault();
+    }).validate({
+        submitHandler: function(form) {
+            return sendPostForm(form) ? location.reload() : false
+        },
+        rules: {
+            "signin-email": {
+                required: true,
+                maxlength: 50,
+                email: true
+            },
+            "signin-password": {
+                required: true,
+                maxlength: 50,
+            }
+        },
+        messages: {
+            "signin-email": {
+                required: msgRequired,
+                maxlength: msgMaxlength(50),
+                email: true
+            },
+            "signin-password": {
+                required: msgRequired,
+                maxlength: msgMaxlength(50),
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function(error, element) {
+            error.insertAfter(element.parent('.fieldset'));
+        },
+    });
+    /*
+    $(document).ready(function() {
+        $("#signup-form").bind("submit", function() {
+
+        });
+    });*/
 </script>

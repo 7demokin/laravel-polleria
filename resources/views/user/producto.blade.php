@@ -117,7 +117,6 @@
                     toastr["success"](res.message);
                     $('#total-carrito').html(res.data.length)
                     $('#div-carrito').html(loadCarrito(res.data))
-                    console.log(loadCarrito(res.data))
                 }
             });
         });

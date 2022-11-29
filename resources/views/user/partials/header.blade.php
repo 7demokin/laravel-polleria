@@ -29,9 +29,21 @@
 
             <div class="navbar-btn-group">
                 <span>
-                    <a class="nav-link-login cd-login">Ingresar</a>
-                    /
-                    <a class="nav-link-login cd-signup">Registrar</a>
+                    @if (@Auth::user() && @Auth::user()->hasRole('cliente'))
+                        <div class="dropdown">
+                            <a class="dropdown-btn">{{ @Auth::user()->nombre }}<img height="18" src="{{ asset('Assets/img/dropdown-menu.png')}}"/></a>
+                            <div class="dropdown-options">
+                                <a href="#">Mi cuenta</a>
+                                <a href="{{ route('logout') }}">Salir</a>
+                            </div>
+                        </div>
+                        
+                    @else
+                        <a href="#!" class="nav-link-login cd-login">Ingresar</a>
+                        /
+                        <a href="#!" class="nav-link-login cd-signup">Registrar</a>
+                    @endif
+
                 </span>
 
                 <button class="shopping-cart-btn">
