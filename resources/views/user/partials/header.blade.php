@@ -31,7 +31,7 @@
                 <span>
                     @if (@Auth::user() && @Auth::user()->hasRole('cliente'))
                         <div class="dropdown">
-                            <a class="dropdown-btn">{{ @Auth::user()->nombre }}<img height="18" src="{{ asset('Assets/img/dropdown-menu.png')}}"/></a>
+                            <button class="dropdown-btn">{{ @Auth::user()->nombre }}<img height="18" src="{{ asset('Assets/img/dropdown-menu.png')}}"/></button>
                             <div class="dropdown-options">
                                 <a href="#">Mi cuenta</a>
                                 <a href="{{ route('logout') }}">Salir</a>
@@ -143,7 +143,8 @@
         </ul>
 
         <div class="cart-btn-group">
-            <button class="btn btn-secondary">Revisar</button>
+            <a href="{{ route('cart') }}"><button class="btn btn-secondary">Revisar</button></a>
+            
             <button class="btn btn-primary">Pagar</button>
         </div>
 

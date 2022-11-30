@@ -42,7 +42,7 @@
     
                         <h5 class="product-name">(x${item.cantidad}) ${item.producto.nombre}</h5>
                         <p class="product-price">
-                            <span class="small">S/</span>${item.producto.precio*item.cantidad}
+                            <span class="small">S/</span>${item.precio*item.cantidad}
                         </p>
                     </a>
                 </li>`)
@@ -177,7 +177,7 @@
 
 
 
-    function sendPostForm(form) {
+    function sendLoginPost(form) {
         // Capturamnos el boton de envío
         let btnEnviar = $(form).find('input[type=submit]');
         let btnTexto = btnEnviar.val();
@@ -207,6 +207,7 @@
                  * correcta
                  * */
                 toastr["success"](res.message);
+                location.reload();
                 return true
             },
             error: function(res) {
@@ -227,7 +228,7 @@
         e.preventDefault();
     }).validate({
         submitHandler: function(form) {
-            return sendPostForm(form) ? location.reload() : false
+            sendLoginPost(form)
         },
         rules: {
             "signup-firstname": {
@@ -290,7 +291,7 @@
         e.preventDefault();
     }).validate({
         submitHandler: function(form) {
-            return sendPostForm(form) ? location.reload() : false
+            sendLoginPost(form)
         },
         rules: {
             "signin-email": {

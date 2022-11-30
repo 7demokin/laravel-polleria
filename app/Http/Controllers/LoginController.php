@@ -9,17 +9,19 @@ use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    //
+    private $tools;
+
+    public function __construct()
+    {
+        $this->tools = new ToolsController();
+    }
+
     public function register(Request $request)
     {
         try {
             $obj = User::where('email', $request['signup-email'])->first();
             if ($obj) {
-                return response()->json([
-                    "status" => 500,
-                    "message" => "Este correo ya ha sido registrado!",
-                    "data" => 'Correo duplicado!'
-                ], 500);
+                return $this->tools->getErrorJsonMessage("Este correo ya ha sido registrado!", 'Correo duplicado!');
             }
 
             $user = new User();
@@ -35,17 +37,9 @@ class LoginController extends Controller
 
             //, $request->input("remember")
             Auth::guard('web')->attempt(['email' => $user->email, 'password' => $user->password], true);
-            return response()->json([
-                "status" => 200,
-                "message" => "Hecho!",
-                "data" => $user,
-            ], 200);
+            return $this->tools->getSuccesJsonMessage($user);
         } catch (\Throwable $th) {
-            return response()->json([
-                "status" => 500,
-                "message" => "Ha ocurrido un error interno!",
-                "data" => ['line' => $th->getLine(), 'message' => $th->getMessage(), 'request' => $request->all()]
-            ], 500);
+            return $this->tools->getThrowJsonMessage($th);
         }
     }
 
@@ -55,31 +49,15 @@ class LoginController extends Controller
             $user = User::where('email', $request['signin-email'])->first();
             if ($user) {
                 if (Auth::guard('web')->attempt(['email' => $user->email, 'password' => $request['signin-password']], $request['remember-me'])) {
-                    return response()->json([
-                        "status" => 200,
-                        "message" => "Hecho!",
-                        "data" => $user,
-                    ], 200);
+                    return $this->tools->getSuccesJsonMessage($user);
                 } else {
-                    return response()->json([
-                        "status" => 500,
-                        "message" => "Contraseña incorrectas!",
-                        "data" => ''
-                    ], 500);
+                    return $this->tools->getErrorJsonMessage("Contraseña incorrectas!", 'Contraseña incorrectas!');
                 }
             } else {
-                return response()->json([
-                    "status" => 500,
-                    "message" => "Correo no registrado!",
-                    "data" => ''
-                ], 500);
+                return $this->tools->getErrorJsonMessage("Correo no registrado!", 'Correo no registrado!');
             }
         } catch (\Throwable $th) {
-            return response()->json([
-                "status" => 500,
-                "message" => "Ha ocurrido un error interno!",
-                "data" => ['line' => $th->getLine(), 'message' => $th->getMessage(), 'request' => $request->all()]
-            ], 500);
+            return $this->tools->getThrowJsonMessage($th);
         }
     }
 

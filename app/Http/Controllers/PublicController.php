@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Carrito;
 use App\Models\Categoria;
 use App\Models\Informacion;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use PhpParser\Node\Expr\FuncCall;
 
 class PublicController extends Controller
 {
     private $data = array();
     private $info;
+    private $tools;
 
     public function __construct()
     {
@@ -18,6 +22,7 @@ class PublicController extends Controller
         $this->data["marca"] = $this->info->marca;
         $this->data["logo"] =  $this->info->logo;
         $this->data["ruta"] = "user";
+        $this->tools = new ToolsController();
     }
 
     public function index(Request $request)
@@ -100,45 +105,74 @@ class PublicController extends Controller
         return view($this->data["ruta"] . ".producto")->with($this->data);
     }
 
+    public function cart(Request $request)
+    {
+        $this->data["title"] = 'Carrito';
+        $this->data["description"] = $this->data["marca"];
+
+        if (Auth::user() && Auth::user()->hasRole('cliente')) {
+            $this->data['carrito'] = $this->tools->getUserCarrito(Auth::user()->id);
+        } else {
+            if (session()->has('carrito')) {
+                $this->data['carrito'] = session('carrito');
+            }
+        }
+        $this->data['total'] = 0;
+        foreach ($this->data['carrito'] as $carrito) {
+            $this->data['total'] += $carrito['precio'] * $carrito['cantidad'];
+        }
+
+        return view($this->data["ruta"] . ".carrito")->with($this->data);
+    }
+
     public function getCart(Request $request)
     {
         try {
-            if (session()->has('id')) {
+            $data = [];
+            if (Auth::user() && Auth::user()->hasRole('cliente')) {
+                $data = $this->tools->getUserCarrito(Auth::user()->id);
             } else {
-                $data = [];
                 if (session()->has('carrito')) {
                     $data = session('carrito');
                 }
-                return response()->json([
-                    "status" => 200,
-                    "message" => "Hecho!",
-                    "data" => $data,
-                ], 200);
             }
+            return $this->tools->getSuccesJsonMessage($data);
         } catch (\Throwable $th) {
-            return response()->json([
-                "status" => 500,
-                "message" => "Ha ocurrido un error interno!",
-                "data" => ['line' => $th->getLine(), 'message' => $th->getMessage()]
-            ], 500);
+            return $$this->tools->getThrowJsonMessage($th);
         }
     }
 
     public function addCartItem(Request $request)
     {
         try {
-            if (session()->has('id')) {
-                # code...
+            $id = $request->id;
+            $item['producto'] = Producto::find($id);
+            $item['cantidad'] = $request->cantidad;
+            $item['precio'] = $item['producto']['precio'];
+            if (Auth::user() && Auth::user()->hasRole('cliente')) {
+                $validacion = Carrito::where('usuario_id', Auth::user()->id)->where('producto_id', $id)->first();
+                if ($validacion) {
+                    $carrito = $validacion;
+                    $carrito->cantidad +=  $item['cantidad'];
+                    $carrito->precio = $item['producto']['precio'];
+                } else {
+                    $carrito = new Carrito();
+                    $carrito->usuario_id = Auth::user()->id;
+                    $carrito->producto_id = $id;
+                    $carrito->precio = $item['producto']['precio'];
+                    $carrito->cantidad = $item['cantidad'];
+                }
+                $carrito->save();
+                $data = $this->tools->getUserCarrito(Auth::user()->id);
+                return $this->tools->getSuccesJsonMessage($data);
             } else {
-                $id = $request->id;
-                $item['producto'] = Producto::find($id);
-                $item['cantidad'] = $request->cantidad;
                 if (session()->has('carrito')) {
                     $carrito = session('carrito');
                     $validacion = true;
                     foreach ($carrito as $key => $value) {
                         if ($carrito[$key]['producto']['id'] == $id) {
                             $carrito[$key]['cantidad'] += $item['cantidad'];
+                            $carrito[$key]['precio'] = $item['producto']['precio'];
                             session(['carrito' => $carrito]);
                             $validacion = false;
                             break;
@@ -151,18 +185,10 @@ class PublicController extends Controller
                 } else {
                     session(['carrito' => [$item]]);
                 }
-                return response()->json([
-                    "status" => 200,
-                    "message" => "Hecho!",
-                    "data" => session('carrito'),
-                ], 200);
+                return $this->tools->getSuccesJsonMessage( session('carrito'));
             }
         } catch (\Throwable $th) {
-            return response()->json([
-                "status" => 500,
-                "message" => "Ha ocurrido un error interno!",
-                "data" => ['line' => $th->getLine(), 'message' => $th->getMessage()]
-            ], 500);
+            return $this->tools->getThrowJsonMessage($th);
         }
     }
 }

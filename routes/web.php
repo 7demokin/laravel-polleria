@@ -22,12 +22,14 @@ Route::get("/promociones", [PublicController::class, 'promotions'])->name("promo
 Route::get("/galeria", [PublicController::class, 'gallery'])->name("gallery");
 Route::get("/contacto", [PublicController::class, 'contact'])->name("contact");
 Route::get("/producto/{id}", [PublicController::class, 'product'])->name("product")->where('id', '[1-9][0-9]*');
+Route::get("/carrito", [PublicController::class, 'cart'])->name("cart");
+
+
 Route::get("/logout", [LoginController::class, 'logout'])->name("logout");
+
 Route::name('api.')->group(function () {
     Route::post("/addCartItem", [PublicController::class, 'addCartItem'])->name("addCartItem");
     Route::get("/getCart", [PublicController::class, 'getCart'])->name("getCart");
     Route::post("/register", [LoginController::class, 'register'])->name("register");
     Route::post("/login", [LoginController::class, 'login'])->name("login");
-    
-
 });

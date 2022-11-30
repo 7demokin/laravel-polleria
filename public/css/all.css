@@ -186,6 +186,11 @@ body {
   background: var(--cultured);
 }
 
+.btn-tertiary {
+  background: var(--red);
+  color: var(--white);
+}
+
 .btn-icon {
   display: flex;
   align-items: center;
@@ -239,7 +244,7 @@ body {
   background: var(--saffron);
   border-bottom: 1px solid hsla(0, 0%, 0%, 0.05);
   box-shadow: 0 0 10px hsla(0, 0%, 0%, 0.05);
-  z-index: 5;
+  z-index: 99;
 }
 
 .navbar-wrapper {
@@ -1712,6 +1717,14 @@ xsigin/signup popup
   padding-top: 150px;
 }
 
+.mt-150 {
+  margin-top: 150px;
+}
+
+.mt-50 {
+  margin-top: 50px;
+}
+
 .pt-50 {
   padding-top: 50px;
 }
@@ -1956,6 +1969,7 @@ xsigin/signup popup
   display: flex;
   align-items: center;
 }
+
 .dropdown .dropdown-btn img {
   margin-left: 2px;
 }
@@ -1964,6 +1978,7 @@ xsigin/signup popup
 .dropdown .dropdown-btn:hover {
   color: var(--dark-space-cadet);
 }
+
 .dropdown .dropdown-btn:active {
   color: var(--dark-space-cadet);
 }
@@ -1975,10 +1990,19 @@ xsigin/signup popup
   position: absolute;
   overflow: auto;
   border-radius: 5px;
+
 }
 
 .dropdown:hover .dropdown-options {
   display: block;
+}
+
+.dropdown:active .dropdown-options {
+  display: block;
+}
+
+.dropdown-options a:visited {
+  color: var(--space-cadet);
 }
 
 .dropdown-options a {
@@ -1992,7 +2016,7 @@ xsigin/signup popup
 }
 
 .dropdown-options a:hover {
-  color: var(--dark-space-cadet);
+  color: var(--dark-space-cadet) !important;
   background-color: #ddd;
   border-radius: 5px;
 }
@@ -2001,6 +2025,68 @@ xsigin/signup popup
   color: var(--dark-space-cadet);
   background-color: #ddd;
   border-radius: 5px;
+}
+
+/*---- datatables ---*/
+.div-table {
+  display: block !important;
+  overflow-x: auto;
+}
+
+th {
+  padding: 15px;
+  background-color: var(--saffron);
+}
+
+td {
+  padding: 1px;
+  margin: auto;
+  text-align: center;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr {
+  background-color: var(--white);
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+
+tbody tr {
+  border: 10px solid var(--space-cadet);
+  border-top: #000;
+}
+
+tbody button {
+  margin: 0 auto 0 auto;
+}
+
+.bg-white {
+  background-color: var(--white);
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.ml {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.p-15 {
+  padding: 15px;
+}
+
+@media (max-width: 570px) {
+  .w-50 {
+    width: 100%;
+  }
 }
 /*-----------------------------------*\ 
   #media_query.css
