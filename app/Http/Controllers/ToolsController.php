@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Carrito;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ToolsController
 {
@@ -17,6 +18,28 @@ class ToolsController
         return $data;
     }
 
+    public function addSessionCarritoToDatabase()
+    {
+        if (Auth::user() && Auth::user()->hasRole('cliente')) {
+            $carrito = session('carrito');
+            foreach ($carrito as $item) {
+                $validacion = Carrito::where('usuario_id', Auth::user()->id)->where('producto_id', $item['producto']['id'])->first();
+                if ($validacion) {
+                    $car = $validacion;
+                    $car->cantidad +=  $item['cantidad'];
+                    $car->precio = $item['producto']['precio'];
+                } else {
+                    $car = new Carrito();
+                    $car->usuario_id = Auth::user()->id;
+                    $car->producto_id = $item['producto']['id'];
+                    $car->precio = $item['producto']['precio'];
+                    $car->cantidad = $item['cantidad'];
+                }
+                $car->save();
+            }
+        }
+    }
+
     public function getSuccesJsonMessage($data)
     {
         return response()->json([
@@ -26,7 +49,7 @@ class ToolsController
         ], 200);
     }
 
-    public function getErrorJsonMessage($msg,$data)
+    public function getErrorJsonMessage($msg, $data)
     {
         return response()->json([
             "status" => 500,
@@ -35,8 +58,9 @@ class ToolsController
         ], 500);
     }
 
-    
-    public function getThrowJsonMessage($th){
+
+    public function getThrowJsonMessage($th)
+    {
         return response()->json([
             "status" => 500,
             "message" => "Ha ocurrido un error interno!",

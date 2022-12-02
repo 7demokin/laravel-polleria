@@ -1713,8 +1713,21 @@ xsigin/signup popup
   padding-bottom: 50px;
 }
 
+.pb-25 {
+  padding-bottom: 25px;
+}
+
 .pt-150 {
   padding-top: 150px;
+}
+
+
+.pt-50 {
+  padding-top: 50px;
+}
+
+.pt-25 {
+  padding-top: 25;
 }
 
 .mt-150 {
@@ -1725,9 +1738,6 @@ xsigin/signup popup
   margin-top: 50px;
 }
 
-.pt-50 {
-  padding-top: 50px;
-}
 
 .text-center {
   text-align: center !important;
@@ -1785,6 +1795,17 @@ xsigin/signup popup
   flex-direction: row;
   justify-content: center;
 }
+
+.div-social {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  column-gap: 10%;
+  flex-direction: row;
+  justify-content: center;
+}
+
 
 .align-items-center {
   width: 100%;
@@ -2044,6 +2065,10 @@ td {
   text-align: center;
 }
 
+td span{
+  display: inline;
+}
+
 tr:nth-child(even) {
   background-color: #f2f2f2;
 }
@@ -2062,7 +2087,7 @@ tbody tr {
   border-top: #000;
 }
 
-tbody button {
+tbody .btn-tertiary {
   margin: 0 auto 0 auto;
 }
 
@@ -2079,6 +2104,11 @@ tbody button {
   margin-right: 0;
 }
 
+.mx{
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .p-15 {
   padding: 15px;
 }
@@ -2088,6 +2118,21 @@ tbody button {
     width: 100%;
   }
 }
+
+.d-flex{
+  display: flex;
+}
+
+.d-inline{
+  display: inline;
+}
+
+.d-flex.center{
+  align-items: center;
+  justify-content: center;
+}
+
+
 /*-----------------------------------*\ 
   #media_query.css
 \*-----------------------------------*/

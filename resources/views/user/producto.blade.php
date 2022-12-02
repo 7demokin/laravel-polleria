@@ -31,7 +31,7 @@
                 <button id="btn-submit" class="btn btn-secondary btn-icon">
                     <img id="load-btn-submit" height="26">
                     <img id="icon-btn-submit" src="{{ asset('Assets/img/agregar.png') }}" height="26" alt="agregar icon">
-                    Agregar
+                    <span id="text-btn-submit">Agregar</span>
                 </button>
 
             </div>
@@ -69,11 +69,14 @@
 @endsection
 @section('scripts')
     <script>
+        const btnCantidadMas = document.getElementById('btn-cantidad-mas');
         const btnCantidadMenos = document.getElementById('btn-cantidad-menos');
         const spanCantidad = document.getElementById('span-cantidad');
         const btnSubmit = document.getElementById('btn-submit');
         const iconBtnSubmit = $('#icon-btn-submit');
         const loadBtnSubmit = $('#load-btn-submit');
+        const textBtnSubmit = $('#text-btn-submit');
+
         loadBtnSubmit.hide();
         loadBtnSubmit.attr('src', "{{ asset('Assets/img/load.gif') }}");
 
@@ -89,7 +92,7 @@
             }
         });
 
-        
+
 
         btnSubmit.addEventListener('click', function() {
 
@@ -105,10 +108,14 @@
                 beforeSend: function() {
                     iconBtnSubmit.hide();
                     loadBtnSubmit.show();
+                    textBtnSubmit.text('Agregando...')
+                    $(this).attr("disabled", "disabled");
                 },
                 complete: function() {
                     iconBtnSubmit.show();
                     loadBtnSubmit.hide();
+                    textBtnSubmit.text('Agregar')
+                    $(this).removeAttr("disabled");
                 },
                 error: function() {
                     toastr["error"]('Ha ocurrido un error interno!');

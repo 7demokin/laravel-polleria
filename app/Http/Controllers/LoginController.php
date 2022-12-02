@@ -37,6 +37,7 @@ class LoginController extends Controller
 
             //, $request->input("remember")
             Auth::guard('web')->attempt(['email' => $user->email, 'password' => $user->password], true);
+            $this->tools->addSessionCarritoToDatabase();
             return $this->tools->getSuccesJsonMessage($user);
         } catch (\Throwable $th) {
             return $this->tools->getThrowJsonMessage($th);
@@ -49,6 +50,7 @@ class LoginController extends Controller
             $user = User::where('email', $request['signin-email'])->first();
             if ($user) {
                 if (Auth::guard('web')->attempt(['email' => $user->email, 'password' => $request['signin-password']], $request['remember-me'])) {
+                    $this->tools->addSessionCarritoToDatabase();
                     return $this->tools->getSuccesJsonMessage($user);
                 } else {
                     return $this->tools->getErrorJsonMessage("Contraseña incorrectas!", 'Contraseña incorrectas!');

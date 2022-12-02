@@ -115,12 +115,15 @@ class PublicController extends Controller
         } else {
             if (session()->has('carrito')) {
                 $this->data['carrito'] = session('carrito');
+            }else{
+                $this->data['carrito'] = [];
             }
         }
         $this->data['total'] = 0;
-        foreach ($this->data['carrito'] as $carrito) {
-            $this->data['total'] += $carrito['precio'] * $carrito['cantidad'];
+        foreach ($this->data['carrito'] as $car) {
+            $this->data['total'] += $car['precio'] * $car['cantidad'];
         }
+        $this->data['array'] = [1,2,3];
 
         return view($this->data["ruta"] . ".carrito")->with($this->data);
     }

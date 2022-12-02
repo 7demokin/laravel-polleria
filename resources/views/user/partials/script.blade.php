@@ -34,7 +34,7 @@
     let loadCarrito = (data) => {
         return data.map((item) => {
             return (`<li>
-                    <a href="#" class="cart-item">
+                    <a href="{{ route('cart') }}" class="cart-item">
                         <div class="img-box">
                             <img src="{{ asset('Assets/img/products/') }}/${item.producto.imagen}" alt="${item.producto.nombre}"
                                 class="product-img" width="50" height="50" loading="lazy">

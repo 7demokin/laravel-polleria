@@ -17867,7 +17867,6 @@ const cartToggleBtn = document.querySelector(".shopping-cart-btn");
 const navToggleBtn = document.querySelector(".menu-toggle-btn");
 const shoppingCart = document.querySelector(".cart-box");
 const btnWhatsappFloat = document.querySelector(".btn-whatsapp-float");
-const btnCantidadMas = document.getElementById("btn-cantidad-mas");
 
 // nav toggle function
 const navToggleFunc = function () {
