@@ -145,7 +145,7 @@
         <div class="cart-btn-group">
             <a href="{{ route('cart') }}"><button class="btn btn-secondary">Revisar</button></a>
             
-            <button class="btn btn-primary">Pagar</button>
+            <button class="btn btn-primary">Realizar pedido</button>
         </div>
 
     </div>

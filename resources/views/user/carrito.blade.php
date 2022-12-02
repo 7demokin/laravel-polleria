@@ -2,8 +2,8 @@
 @section('content')
     <section class="section">
         <h1 class="text-white text-center h2 pb-25">Carrito de compras</h1>
-        @if ($carrito)
-            <div class="div-table">
+        @if ($carrito && count($carrito) > 0)
+            <div id="div-table" class="div-table">
                 <table id="carrito-tb" class="display table" style="width:100%">
                     <thead>
                         <tr>
@@ -13,7 +13,6 @@
                             <th>Precio</th>
                             <th>Eliminar</th>
                         </tr>
-
                     </thead>
                     <tbody>
                         @foreach ($carrito as $item)
@@ -61,11 +60,18 @@
                     </tbody>
                 </table>
             </div>
-            <div class="bg-white mt-50 text-center w-50 ml p-15">
-                <div class="h4">Total: S/ <span id="span-total" class="d-inline">{{ $total }}</span>
+            <div id="div-total" class="div-total mt-50 text-center ml">
+                <div class="bg-white p-15">
+                    <div class="h4">Total: S/ <span id="span-total" class="d-inline">{{ $total }}</span>
+                    </div>
+                    <div class="text-red h5"><small>*Incluye IGV</small></div>
                 </div>
-                <div class="text-red h5"><small>*Incluye IGV</small></div>
-                <div></div>
+                <div>
+                    <button class="btn btn-primary btn-icon w-100 text-center">
+                        <img class="icon-img" src="{{ asset('Assets/img/checkout.png') }}" height="26" alt="trash icon">
+                        Realizar Pedido
+                    </button>
+                </div>
             </div>
         @else
             <img class="mx pt-25" src="{{ asset('Assets/img/carrito-de-compras.png') }}" alt="shopping cart icon "
@@ -92,44 +98,74 @@
 @endsection
 @section('scripts')
     <script>
+        $('.load-img').attr('src', "{{ asset('Assets/img/load-w.gif') }}").hide();
         let spanTotal = $('#span-total');
+        let divTotal = $('#div-total');
+        let divTable = $('#div-table');
+
+
 
         function updateTotal(id, cantidad, sumar) {
-            let spanPrecioU = $('#span-precio-u-' + id);
-            let spanPrecio = $('#span-precio-' + id);
+            let btns = $('button');
+            let data = {
+                id: id,
+                cantidad: sumar ? 1 : -1,
+                _token: $('meta[name="csrf-token"]').attr('content')
+            };
 
-            precioU = parseFloat(spanPrecioU.text())
-            precio = precioU * cantidad
-            spanPrecio.text(precio)
+            $.ajax({
+                type: "post",
+                url: "{{ route('api.addCartItem') }}",
+                data: data,
+                beforeSend: function() {
+                    btns.attr("disabled", "disabled");
+                },
+                complete: function() {
+                    btns.removeAttr("disabled");
+                },
+                error: function(res) {
+                    toastr["error"](res.responseJSON.message);
+                },
+                success: function(res) {
 
-            total = parseFloat(spanTotal.text())
-            if (sumar) {
-                spanTotal.text(total + precioU)
-            } else {
-                spanTotal.text(total - precioU)
-            }
+                    let spanCantidad = $('#span-cantidad-' + id);
+                    let spanPrecioU = $('#span-precio-u-' + id);
+                    let spanPrecio = $('#span-precio-' + id);
+
+                    let precioU = parseFloat(spanPrecioU.text())
+                    let precio = precioU * cantidad
+                    spanCantidad.text(cantidad);
+                    spanPrecio.text(precio)
+                    let total = parseFloat(spanTotal.text())
+                    if (sumar) {
+                        spanTotal.text(total + precioU)
+                    } else {
+                        spanTotal.text(total - precioU)
+                    }
+                    $('#total-carrito').html(res.data.length)
+                    $('#div-carrito').html(loadCarrito(res.data))
+                }
+            });
         }
 
         $(document).ready(function() {
             $(".btn-cantidad-mas").click(function() {
-                $(this).attr("disabled", "disabled");
+                let btns = $(this).closest('tr').find('button');
+                btns.attr("disabled", "disabled");
                 let id = $(this).attr('rel');
                 let spanCantidad = $('#span-cantidad-' + id);
                 let cantidad = parseInt(spanCantidad.text()) + 1;
-                spanCantidad.text(cantidad);
                 updateTotal(id, cantidad, true)
-                $(this).removeAttr("disabled");
             });
             $(".btn-cantidad-menos").click(function() {
-                $(this).attr("disabled", "disabled");
+                let btns = $(this).closest('tr').find('button');
+                btns.attr("disabled", "disabled");
                 let id = $(this).attr('rel');
                 let spanCantidad = $('#span-cantidad-' + id);
                 let cantidad = parseInt(spanCantidad.text()) - 1;
                 if (parseInt(cantidad) > 0) {
-                    spanCantidad.text(cantidad);
                     updateTotal(id, cantidad, false)
                 }
-                $(this).removeAttr("disabled");
             });
 
             $(".btn-delete").click(function() {
@@ -137,39 +173,54 @@
                 let btn = $(this)
                 let id = $(this).attr('rel')
 
+                let spanPrecio = $('#span-precio-' + id);
+
                 let loadImg = $(this).find('.load-img')
                 let iconImg = $(this).find('.icon-img')
                 let textBtn = $(this).find('.text-btn')
 
+                let btns = $('button');
+
                 let data = {
-                    id: id
+                    id: id,
+                    _token: $('meta[name="csrf-token"]').attr('content')
                 };
                 $.ajax({
                     type: "post",
-                    url: "{{ route('api.addCartItem') }}",
+                    url: "{{ route('api.delCartItem') }}",
                     data: data,
                     beforeSend: function() {
                         iconImg.hide();
                         loadImg.show();
                         textBtn.text('Eliminando...')
-                        btn.attr("disabled", "disabled");
+                        btns.attr("disabled", "disabled");
+
                     },
                     complete: function() {
                         iconImg.show();
                         loadImg.hide();
                         textBtn.text('Eliminar')
-                        btn.removeAttr("disabled");
+                        btns.removeAttr("disabled");
                     },
                     error: function(res) {
                         toastr["error"](res.responseJSON.message);
                     },
                     success: function(res) {
-                        $(this).closest('tr').remove();
                         toastr["success"](res.message);
+                        spanTotal.text(parseFloat(spanTotal.text()) - parseFloat(spanPrecio
+                            .text()));
+                        $('#total-carrito').html(res.data.length)
+                        $('#div-carrito').html(loadCarrito(res.data))
+                        btn.closest('tr').remove();
+                        if (res.data.length == 0) {
+                            divTable.hide()
+                            divTotal.hide()
+                            location.reload();
+                        }
                     }
                 });
 
-                
+
             });
         });
     </script>

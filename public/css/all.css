@@ -20,17 +20,17 @@
    * colors 
    */
 
-  --red: hsl(358, 75%, 50%);
-  --red-orange-crayola: hsl(0, 100%, 66%);
-  --space-cadet: hsl(249, 37%, 19%);
-  --dark-space-cadet: hsl(248, 78%, 7%);
-  --pistachio: hsl(88, 50%, 60%);
-  --cultured: hsl(220, 13%, 95%);
-  --saffron-ligth: hsl(45, 72%, 75%);
-  --saffron: hsl(45, 91%, 58%);
-  --saffron-dark: hsl(45, 82%, 48%);
-  --rhythm: hsl(240, 9%, 51%);
-  --white: hsl(0, 0%, 100%);
+  --red: rgb(223, 32, 38);
+  --red-orange-crayola: rgb(255, 82, 82);
+  --space-cadet: #241f42;
+  --dark-space-cadet: #080420;
+  --pistachio: #9ccc66;
+  --cultured: #f1f2f4;
+  --saffron-ligth: #edd691;
+  --saffron: #f5c532;
+  --saffron-dark: #dfad16;
+  --rhythm: #77778d;
+  --white: #ffffff;
   --dark: #000;
   --dark-ligth: #2c2c2c;
 
@@ -194,6 +194,7 @@ body {
 .btn-icon {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -2113,8 +2114,15 @@ tbody .btn-tertiary {
   padding: 15px;
 }
 
+.div-total{
+  width: 300px;
+}
+
 @media (max-width: 570px) {
   .w-50 {
+    width: 100%;
+  }
+  .div-total {
     width: 100%;
   }
 }

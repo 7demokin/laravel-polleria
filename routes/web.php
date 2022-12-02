@@ -29,6 +29,7 @@ Route::get("/logout", [LoginController::class, 'logout'])->name("logout");
 
 Route::name('api.')->group(function () {
     Route::post("/addCartItem", [PublicController::class, 'addCartItem'])->name("addCartItem");
+    Route::post("/delCartItem", [PublicController::class, 'delCartItem'])->name("delCartItem");
     Route::get("/getCart", [PublicController::class, 'getCart'])->name("getCart");
     Route::post("/register", [LoginController::class, 'register'])->name("register");
     Route::post("/login", [LoginController::class, 'login'])->name("login");

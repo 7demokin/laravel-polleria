@@ -3,7 +3,7 @@
     <section class="about">
         <div class="pt-50">
             <div class="img-box">
-                <img src="{{ asset('Assets/img/products/' . $producto->imagen) }}" alt="{{ $producto->nombre }}"
+                <img src="{{ $producto->imagen != null ? asset('Assets/img/products/'.$producto->imagen)  : asset('Assets/img/no-pictures.png') }}" alt="{{ $producto->nombre }}"
                     class="about-img">
             </div>
         </div>

@@ -33,20 +33,23 @@
 
     let loadCarrito = (data) => {
         return data.map((item) => {
+            if (item.producto.imagen != null) {
+                item.producto.imagen = "{{ asset('Assets/img/products/') }}" + '/' + item.producto.imagen
+            } else {
+                item.producto.imagen = "{{ asset('Assets/img/no-pictures.png') }}"
+            }
             return (`<li>
                     <a href="{{ route('cart') }}" class="cart-item">
                         <div class="img-box">
-                            <img src="{{ asset('Assets/img/products/') }}/${item.producto.imagen}" alt="${item.producto.nombre}"
+                            <img src="${item.producto.imagen}" alt="${item.producto.nombre}"
                                 class="product-img" width="50" height="50" loading="lazy">
                         </div>
-    
                         <h5 class="product-name">(x${item.cantidad}) ${item.producto.nombre}</h5>
                         <p class="product-price">
                             <span class="small">S/</span>${item.precio*item.cantidad}
                         </p>
                     </a>
                 </li>`)
-
         }).join(' ');
     }
 

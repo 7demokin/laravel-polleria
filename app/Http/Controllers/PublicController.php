@@ -115,7 +115,7 @@ class PublicController extends Controller
         } else {
             if (session()->has('carrito')) {
                 $this->data['carrito'] = session('carrito');
-            }else{
+            } else {
                 $this->data['carrito'] = [];
             }
         }
@@ -123,7 +123,7 @@ class PublicController extends Controller
         foreach ($this->data['carrito'] as $car) {
             $this->data['total'] += $car['precio'] * $car['cantidad'];
         }
-        $this->data['array'] = [1,2,3];
+        $this->data['array'] = [1, 2, 3];
 
         return view($this->data["ruta"] . ".carrito")->with($this->data);
     }
@@ -140,6 +140,34 @@ class PublicController extends Controller
                 }
             }
             return $this->tools->getSuccesJsonMessage($data);
+        } catch (\Throwable $th) {
+            return $$this->tools->getThrowJsonMessage($th);
+        }
+    }
+
+    public function delCartItem(Request $request)
+    {
+        try {
+            $id = $request->id;
+            if (Auth::user() && Auth::user()->hasRole('cliente')) {
+                $data = Carrito::where('usuario_id', Auth::user()->id)->where('producto_id', $id)->first();
+                $data->delete();
+                return $this->tools->getSuccesJsonMessage($this->tools->getUserCarrito(Auth::user()->id));
+            } else {
+                if (session()->has('carrito')) {
+                    $carrito = session('carrito');
+                    foreach ($carrito as $key => $value) {
+                        if ($carrito[$key]['producto']['id'] == $id) {
+                            unset($carrito[$key]);
+                            break;
+                        }
+                    }
+                    session(['carrito' => $carrito]);
+                }
+                return $this->tools->getSuccesJsonMessage(session('carrito'));
+
+            }
+           
         } catch (\Throwable $th) {
             return $$this->tools->getThrowJsonMessage($th);
         }
@@ -188,7 +216,7 @@ class PublicController extends Controller
                 } else {
                     session(['carrito' => [$item]]);
                 }
-                return $this->tools->getSuccesJsonMessage( session('carrito'));
+                return $this->tools->getSuccesJsonMessage(session('carrito'));
             }
         } catch (\Throwable $th) {
             return $this->tools->getThrowJsonMessage($th);

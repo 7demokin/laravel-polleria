@@ -36,9 +36,13 @@ class LoginController extends Controller
             $user->save();
 
             //, $request->input("remember")
-            Auth::guard('web')->attempt(['email' => $user->email, 'password' => $user->password], true);
-            $this->tools->addSessionCarritoToDatabase();
-            return $this->tools->getSuccesJsonMessage($user);
+            $remember = true;
+            if (Auth::guard('web')->attempt(['email' => $user->email, 'password' => $request['signup-password']], $remember)) {
+                $this->tools->addSessionCarritoToDatabase();
+                return $this->tools->getSuccesJsonMessage($user);
+            }else{
+                return $this->tools->getErrorJsonMessage("Error al registrarse!", 'Error al registrarse!');
+            }
         } catch (\Throwable $th) {
             return $this->tools->getThrowJsonMessage($th);
         }
