@@ -123,10 +123,32 @@ class PublicController extends Controller
         foreach ($this->data['carrito'] as $car) {
             $this->data['total'] += $car['precio'] * $car['cantidad'];
         }
-        $this->data['array'] = [1, 2, 3];
 
         return view($this->data["ruta"] . ".carrito")->with($this->data);
     }
+
+    public function checkout(Request $request)
+    {
+        $this->data["title"] = 'Cuenta';
+        $this->data["description"] = $this->data["marca"];
+
+        if (Auth::user() && Auth::user()->hasRole('cliente')) {
+            $this->data['carrito'] = $this->tools->getUserCarrito(Auth::user()->id);
+        } else {
+            if (session()->has('carrito')) {
+                $this->data['carrito'] = session('carrito');
+            } else {
+                $this->data['carrito'] = [];
+            }
+        }
+        $this->data['total'] = 0;
+        foreach ($this->data['carrito'] as $car) {
+            $this->data['total'] += $car['precio'] * $car['cantidad'];
+        }
+
+        return view($this->data["ruta"] . ".cuenta")->with($this->data);
+    }
+
 
     public function getCart(Request $request)
     {

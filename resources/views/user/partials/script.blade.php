@@ -89,7 +89,18 @@
             ($(event.target).is('.cd-signup')) ? signup_selected(): login_selected();
 
         });
-
+        $('.link-login').on('click', function(event) {
+            //show modal layer
+            $form_modal.addClass('is-visible');
+            //show the selected form
+            login_selected();
+        });
+        $('.link-register').on('click', function(event) {
+            //show modal layer
+            $form_modal.addClass('is-visible');
+            //show the selected form
+            signup_selected();
+        });
         //close modal
         $('.cd-user-modal').on('click', function(event) {
             if ($(event.target).is($form_modal) || $(event.target).is('.cd-close-form')) {

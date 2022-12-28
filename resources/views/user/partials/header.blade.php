@@ -144,8 +144,8 @@
 
         <div class="cart-btn-group">
             <a href="{{ route('cart') }}"><button class="btn btn-secondary">Revisar</button></a>
+            <a href="{{ route('checkout') }}"><button class="btn btn-primary">Realizar pedido</button></a>
             
-            <button class="btn btn-primary">Realizar pedido</button>
         </div>
 
     </div>

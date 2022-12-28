@@ -67,10 +67,10 @@
                     <div class="text-red h5"><small>*Incluye IGV</small></div>
                 </div>
                 <div>
-                    <button class="btn btn-primary btn-icon w-100 text-center">
+                    <a class="btn btn-primary btn-icon w-100 text-center" href="{{ route('checkout') }}">
                         <img class="icon-img" src="{{ asset('Assets/img/checkout.png') }}" height="26" alt="trash icon">
                         Realizar Pedido
-                    </button>
+                    </a>
                 </div>
             </div>
         @else
